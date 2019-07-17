@@ -1,0 +1,73 @@
+.createReceptButtons{
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 2px solid black; 
+}
+
+.createReceptForm{
+  text-align: left;
+}
+
+.createReceptName{
+  font-size: 20px;
+}
+
+.multiselect {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.checkboxes {
+  position: absolute;
+  display: block;
+  text-align: left;
+  border: 1px #dadada solid;
+}
+
+.checkboxes label {
+  background-color: #fff;
+  display: block;
+
+}
+
+.checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.addProductsList{
+    display: flex;
+    flex-direction: column;
+}
+
+.addProductsItem{
+    display: flex;
+    margin: 2px 0;
+}
+
+.addProductsItemName{
+    width: 60%
+}
+
+.addProductsItemNumber{
+    width: 15%;
+}
+
+.addReceptTextField{
+  margin: 20px 0;
+}

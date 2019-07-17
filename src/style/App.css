@@ -1,0 +1,67 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.allSite{
+  display: flex;
+  width: 1024px;
+  margin: 0 auto;
+}
+.alwaysShow{
+  display: flex;
+  flex-direction: column;
+  background-color: #87083F;
+  color: #D1B764;
+  width: 224px;
+  height: 100vh;
+}
+.appTitle{
+  padding: 50px 0;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+ .mainMenu{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 400px;
+  text-align: left;
+  justify-content: space-around;
+  list-style: none;
+ }
+
+ .element{
+   color: #BFA600;
+   text-decoration: none;
+   text-transform: uppercase;
+   padding-left: 30px;
+   font-family: 'Loved by the King', cursive;
+   font-size: 21px;
+ }
+ .element.active{
+   color: #D1B764;
+ }
+
+  .element.active div{
+    width: 10px;
+    height: 10px;
+    background-color: #D1B764;
+    display: inline-block;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+
+ .menuIcon{
+   font-size: 30px;
+   padding-right: 10px;
+ }
+ .selectedOption{
+   text-align: center;
+   width: 790px;
+ }
+ .rightBorder{
+   background-color: #87083F;
+   width: 10px;
+ }

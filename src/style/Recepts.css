@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.selectedComponentName{
+    color: #D1B764;
+    background-color: #87083F;
+    font-family: 'Gloria Hallelujah', cursive;
+    padding: 50px 0;
+}
+
+.receptsMenu{
+    margin: 30px auto;
+    display: flex;
+    width: 870px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.leftSide{
+    text-align: left;
+    padding-left: 10px;
+    width: 400px;
+}
+
+.createReceptButton{
+    background-color: #fff;
+    padding: 5px 15px;
+    font-family: 'Open Sans', sans-serif;
+    border: 2px solid black; 
+}
+
+.searchReceptSection{
+    padding-top: 20px; 
+}
+
+.searchReceptSection form{
+    margin: 5px 0;
+}
+
+.searchReceptSection form label{
+    padding-right: 10px;
+}
+
+.searchRecept{
+    width: 200px;
+    padding: 5px 0;
+    border: 1px solid black;
+}
+
+.setMealType{
+    width: 90px;
+    padding: 5px 0;
+    border: 1px solid black; 
+}
+
+.setPeopleNumber{
+    width:35px;
+    padding: 5px 0;
+    border: 1px solid black;
+}
+
+.receptList{
+    padding: 20px 0;
+    list-style: none;
+}
+
+.receptListItem{
+    padding-top: 20px; 
+}
+.receptListItemName{
+    display: inline-block;
+    font-weight: bold;
+}
+.receptListItemButton{
+    float: right;
+    background-color: #fff;
+    padding: 5px 5px;
+    border: 2px solid black; 
+    font-family: 'Open Sans', sans-serif;
+}
+.rightSide{
+    width: 390px;
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 2px solid #000;
+}
