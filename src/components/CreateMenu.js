@@ -162,7 +162,6 @@ class CreateMenu extends Component {
                 'Content-Type': 'application/json',
             }
         });
-        this.props.upgradeMenus();
         this.setState({
             newMenu: ""
         })
@@ -192,33 +191,35 @@ class CreateMenu extends Component {
                         <button onClick={this.handleCreateNewMenuButton}>Create menu</button>
                     </form>
                 </div>
-                {newMenu ?
-                    <div>{this.state.editMeal ?
-                        <div className="changeReceptOnNewMenu">
-                            <p>Change: {this.state.editMealItem} to:</p>
-                            <input value={this.state.editMealInput} onChange={this.handleEditMealInputChange}></input>
-                            <div>{this.state.editMealButton && this.state.editMealInput.length > 2 ? <ul>{inputSearch.map((recept, index) => <li key={index}><button onClick={this.handleEditMealSelectButton} value={recept.name}>{recept.name}</button></li>)}</ul> : null}</div>
-                            <button onClick={this.handleEditMealConfirmButton}>Confirm change</button><button onClick={this.handleEditMealCancelButton}>Cancel</button>
+                {
+                    newMenu ?
+                        <div>{this.state.editMeal ?
+                            <div className="changeReceptOnNewMenu">
+                                <p>Change: {this.state.editMealItem} to:</p>
+                                <input value={this.state.editMealInput} onChange={this.handleEditMealInputChange}></input>
+                                <div>{this.state.editMealButton && this.state.editMealInput.length > 2 ? <ul>{inputSearch.map((recept, index) => <li key={index}><button onClick={this.handleEditMealSelectButton} value={recept.name}>{recept.name}</button></li>)}</ul> : null}</div>
+                                <button onClick={this.handleEditMealConfirmButton}>Confirm change</button><button onClick={this.handleEditMealCancelButton}>Cancel</button>
 
-                        </div> : null}
-                        <button onClick={this.handleConfirmMenu}>Confirm Menu</button>
-                        <h2>{newMenu.name}</h2>
-                        <div>
-                            {newMenu.days.map((day, index) => (
-                                <div>
-                                    <h3>Day {index + 1} kcal: {day.kcal}</h3>
-                                    <ul>
-                                        <li key={index + "1"}>Breakfast: {day.breakfast.name} kcal: {day.breakfast.kcal}<button onClick={() => this.handleEditMealShow(index, "breakfast")}>edit</button></li>
-                                        <li key={index + "2"}>Lunch: {day.lunch.name} kcal: {day.lunch.kcal}<button onClick={() => this.handleEditMealShow(index, "lunch")}>edit</button></li>
-                                        <li key={index + "3"}>Diner: {day.diner.name} kcal: {day.diner.kcal}<button onClick={() => this.handleEditMealShow(index, "diner")}>edit</button></li>
-                                        <li key={index + "4"}>Tea: {day.tea.name} kcal: {day.tea.kcal}<button onClick={() => this.handleEditMealShow(index, "tea")}>edit</button></li>
-                                        <li key={index + "5"}>Supper: {day.supper.name} kcal: {day.supper.kcal}<button onClick={() => this.handleEditMealShow(index, "supper")}>edit</button></li>
-                                    </ul>
-                                </div>))}
-                        </div>
-                    </div> : null}
+                            </div> : null}
+                            <button onClick={this.handleConfirmMenu}>Confirm Menu</button>
+                            <h2>{newMenu.name}</h2>
+                            <div>
+                                {newMenu.days.map((day, index) => (
+                                    <div>
+                                        <h3>Day {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
+                                        <ul>
+                                            <li key={index + "1"}>Breakfast: {day.breakfast.name} kcal: {day.breakfast.kcal}<button onClick={() => this.handleEditMealShow(index, "breakfast")}>edit</button></li>
+                                            <li key={index + "2"}>Lunch: {day.lunch.name} kcal: {day.lunch.kcal}<button onClick={() => this.handleEditMealShow(index, "lunch")}>edit</button></li>
+                                            <li key={index + "3"}>Diner: {day.diner.name} kcal: {day.diner.kcal}<button onClick={() => this.handleEditMealShow(index, "diner")}>edit</button></li>
+                                            <li key={index + "4"}>Tea: {day.tea.name} kcal: {day.tea.kcal}<button onClick={() => this.handleEditMealShow(index, "tea")}>edit</button></li>
+                                            <li key={index + "5"}>Supper: {day.supper.name} kcal: {day.supper.kcal}<button onClick={() => this.handleEditMealShow(index, "supper")}>edit</button></li>
+                                        </ul>
+                                    </div>))}
+                            </div>
+                        </div> : null
+                }
 
-            </div>
+            </div >
         )
     }
 }

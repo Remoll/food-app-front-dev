@@ -7,7 +7,6 @@ class Recepts extends Component {
     state = {
         searchRecept: "",
         mealTypeFilter: "",
-        peopleNumber: 1,
         showRecept: false,
         activeRecept: "",
     }
@@ -25,12 +24,6 @@ class Recepts extends Component {
         this.setState({
             showRecept: true,
             activeRecept: (e.target.id - 1),
-        })
-    }
-    handleSetPeopleNumber = (e) => {
-        if (e.target.value < 1) return
-        this.setState({
-            peopleNumber: e.target.value,
         })
     }
     handleCreateRecept = () => {
@@ -63,17 +56,13 @@ class Recepts extends Component {
                                     <option value="supper">Supper</option>
                                 </select>
                             </form>
-                            <form>
-                                <label>People number</label>
-                                <input className="setPeopleNumber" onChange={this.handleSetPeopleNumber} type="number" value={this.state.peopleNumber}></input>
-                            </form>
                         </div>
                         <ul className="receptList">
                             {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{recept.kcal} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Show</button></li>)}
                         </ul>
                     </div>
                     <div className="rightSide">
-                        {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept products={this.props.products} id={this.props.recepts.length} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} peopleNumber={this.state.peopleNumber} />) : <h2>
+                        {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept products={this.props.products} id={this.props.recepts.length} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} />) : <h2>
                             Choose recipe or create a new one to display</h2>}
                     </div>
                 </div>

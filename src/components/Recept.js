@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Recept = (props) => {
-    const components = props.recept.components.map(component => <li key={component.name}>{component.name} x{component.number * props.peopleNumber} {component.measure}</li>);
+    const components = props.recept.components.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>);
     return (
         <div>
             <h1>{props.recept.name}</h1>

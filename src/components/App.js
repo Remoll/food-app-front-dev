@@ -56,9 +56,8 @@ class App extends Component {
       method: 'GET',
     })
       .then(res => res.json())
-      .then(data => this.setState({
-        menus: data
-      }));
+      .then(data => { this.setState({ menus: data }) }
+      );
   };
 
   render() {

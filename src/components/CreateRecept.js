@@ -11,7 +11,7 @@ class CreateRecept extends Component {
         diner: false,
         tea: false,
         supper: false,
-        addedProducts: [{ name: "", measure: "", kcal: "", number: "" }],
+        addedProducts: [{ name: "", measure: "", kcal: "", number: "1" }],
         addedProductIndex: -1,
         addedRecept: ""
     }
@@ -53,7 +53,7 @@ class CreateRecept extends Component {
 
     handleAddProduct = (e) => {
         e.preventDefault();
-        const item = { name: "", measure: "", number: "" };
+        const item = { name: "", measure: "", kcal: "", number: "1" };
         const newList = this.state.addedProducts;
         newList.push(item);
         this.setState({
@@ -144,6 +144,8 @@ class CreateRecept extends Component {
 
     render() {
         const inputSearch = this.state.addedProductIndex === -1 ? null : this.state.products.filter(product => product.name.toLowerCase().includes(this.state.addedProducts[this.state.addedProductIndex].name.toLowerCase()));
+        let kcal = 0;
+        this.state.addedProducts.forEach(product => kcal += product.kcal * product.number)
         return (
             <div className="createReceptForm">
                 <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="Recept Name" />
@@ -178,7 +180,7 @@ class CreateRecept extends Component {
                     </li>))}
                 </ul>
                 <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5"></textarea>
-                <p>kcal: {}</p>
+                <p>kcal: {kcal}</p>
                 <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>Add your new recept</button>
             </div>
         )

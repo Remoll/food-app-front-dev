@@ -39,7 +39,7 @@ class Menu extends Component {
                 <div>
                     {this.props.menu.days.map((day, index) => (
                         <div>
-                            <h3>Day {index + 1} kcal: {day.kcal}</h3>
+                            <h3>Day {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
                             <ul>
                                 <li key={index + "1"}>{day.breakfast.name} kcal: {day.breakfast.kcal}<button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>Show</button></li>
                                 <li key={index + "2"}>{day.lunch.name} kcal: {day.lunch.kcal}<button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>Show</button></li>
