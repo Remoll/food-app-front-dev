@@ -127,7 +127,6 @@ class CreateMenu extends Component {
         const type = this.state.editMealType;
         const newMenu = this.state.newMenu;
         const mealName = this.props.recepts.filter(recept => recept.name === this.state.editMealInput)
-        console.log(mealName)
         if (mealName.length === 0) {
             alert("Choose the right recipe");
             return;
@@ -143,7 +142,6 @@ class CreateMenu extends Component {
         } else if (type === "supper") {
             newMenu.days[this.state.editMealIndex].supper = mealName[0];
         }
-        console.log(this.state.newMenu)
         this.setState({
             newMenu,
             editMeal: false,
@@ -163,11 +161,13 @@ class CreateMenu extends Component {
             headers: {
                 'Content-Type': 'application/json',
             }
-        })
+        });
+        this.props.upgradeMenus();
         this.setState({
             newMenu: ""
         })
     }
+
     render() {
         const { newMenu } = this.state;
         const inputSearch = this.props.recepts.filter(recept => recept.name.toLowerCase().includes(this.state.editMealInput.toLowerCase()));

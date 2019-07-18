@@ -39,7 +39,27 @@ class App extends Component {
       .then(data => this.setState({
         menus: data
       }));
+  };
+
+  upgradeRecepts() {
+    fetch(`http://localhost:5000/getrecepts`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => this.setState({
+        recepts: data
+      }));
   }
+
+  upgradeMenus() {
+    fetch(`http://localhost:5000/getmenu`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => this.setState({
+        menus: data
+      }));
+  };
 
   render() {
     return (
@@ -55,8 +75,8 @@ class App extends Component {
             </nav>
           </div>
           <div className="selectedOption">
-            <Route path="/recepts" render={(props) => <Recepts {...props} products={this.state.products} recepts={this.state.recepts} />} />
-            <Route path="/menu" render={(props) => <Menus {...props} recepts={this.state.recepts} menus={this.state.menus} />} />
+            <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts} products={this.state.products} recepts={this.state.recepts} />} />
+            <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus} recepts={this.state.recepts} menus={this.state.menus} />} />
             <Route path="/shopinglist" component={ShopingList} />
             <Route path="/fridge" component={Fridge} />
           </div>

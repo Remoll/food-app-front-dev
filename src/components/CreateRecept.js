@@ -11,7 +11,7 @@ class CreateRecept extends Component {
         diner: false,
         tea: false,
         supper: false,
-        addedProducts: [{ name: "", measure: "", number: "" }],
+        addedProducts: [{ name: "", measure: "", kcal: "", number: "" }],
         addedProductIndex: -1,
         addedRecept: ""
     }
@@ -92,15 +92,16 @@ class CreateRecept extends Component {
     handleConfirmAddedRecept = (e) => {
         e.preventDefault();
         const components = this.state.addedProducts;
+        let kcal = 0;
+        components.forEach(component => kcal += component.kcal * component.number)
         const addedRecept = {
             id: this.props.id + 1,
             name: this.state.addedReceptName,
-            kcal: "",
+            kcal,
             components: components.map(component => ({ name: component.name, measure: component.measure, number: component.number })),
             type: `${this.state.breakfast ? "breakfast " : ""}${this.state.lunch ? "lunch " : ""}${this.state.diner ? "diner " : ""}${this.state.tea ? "tea " : ""}${this.state.supper ? "supper" : ""}`,
             recept: this.state.addedRecept,
         }
-        console.log(addedRecept)
         fetch('http://localhost:5000/addrecept', {
             method: 'POST',
             body: JSON.stringify(addedRecept),
@@ -116,19 +117,19 @@ class CreateRecept extends Component {
             diner: false,
             tea: false,
             supper: false,
-            addedProducts: [{ name: "", measure: "", number: "" }],
+            addedProducts: [{ name: "", measure: "", kcal: "", number: "" }],
             addedRecept: "",
         })
     }
 
     handleSelectProduct = (e) => {
-        console.log("ok")
-        // const arr = this.state.addedProducts;
-        // arr[this.state.addedProductIndex] = this.state.products.filter(product => product.name.toLowerCase() === e.target.value.toLowerCase());
-        // console.log(this.state.products.filter(product => product.name.toLowerCase() === e.target.value.toLowerCase()))
-        // this.setState({
-        //     addedProducts: arr
-        // })
+        const arr = this.state.addedProducts;
+        const element = this.state.products.filter(product => product.name.toLowerCase() === e.target.value.toLowerCase())
+        arr[this.state.addedProductIndex] = element[0];
+        this.setState({
+            addedProducts: arr,
+            addedProductIndex: -1
+        })
     }
 
     handleSetIndex = (index) => {
@@ -170,9 +171,9 @@ class CreateRecept extends Component {
                 <button className="createReceptButtons" onClick={this.handleAddProduct}>add product</button>
                 <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
                     <li className="addProductsItem" key={index}>
-                        <input className="addProductsItemName" id={index} onChange={this.handleChangeExactProduct} onFocus={this.state.addedProductIndex !== index ? () => { this.handleSetIndex(index) } : null} onBlur={() => this.handleSetIndex(-1)} type="text" value={product.name} />
-                        <div>{this.state.addedProductIndex === this.handleCheckProductIndex(index) && this.state.addedProducts[this.state.addedProductIndex].name.length > 2 ? <ul>{inputSearch.map((product, index) => <li key={index}><button onClick={console.log("ok")} value={product.name}>{product.name}</button></li>)}</ul> : null}</div>
-                        <input className="addProductsItemNumber" id={index} onChange={this.handleChangeExactProduct} type="number" value={product.number} />
+                        <input className="addProductsItemName" id={index} onChange={this.handleChangeExactProduct} onFocus={this.state.addedProductIndex !== index ? () => { this.handleSetIndex(index) } : null} type="text" value={product.name} />
+                        <div>{this.state.addedProductIndex === this.handleCheckProductIndex(index) && this.state.addedProducts[this.state.addedProductIndex].name.length > 2 ? <ul>{inputSearch.map((product, index) => <li key={index}><button onClick={(e) => this.handleSelectProduct(e)} value={product.name}>{product.name}</button></li>)}</ul> : null}</div>
+                        <input className="addProductsItemNumber" id={index} onChange={this.handleChangeExactProduct} type="number" value={product.number} /><p>{product.measure}</p>
                         <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>X</button>
                     </li>))}
                 </ul>

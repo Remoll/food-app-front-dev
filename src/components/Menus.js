@@ -44,7 +44,7 @@ class Menus extends Component {
                         </ul>
                     </div>
                     <div className="rightSide">
-                        {this.state.showMenu ? (this.state.activeMenu === -1 ? <CreateMenu menus={this.props.menus} recepts={this.props.recepts} /> : <Menu menu={this.props.menus[this.state.activeMenu]} />) : <h2>
+                        {this.state.showMenu ? (this.state.activeMenu === -1 ? <CreateMenu upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} /> : <Menu menu={this.props.menus[this.state.activeMenu]} />) : <h2>
                             Choose menu or create a new one to display</h2>}
                     </div>
                 </div>
