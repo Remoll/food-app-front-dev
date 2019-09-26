@@ -65,17 +65,22 @@ class CreateMenu extends Component {
             name: this.state.name,
             days: []
         }
-        for (let i = 0; i < this.state.days; i++) {
+        for (let i = 0; i < this.state.days; i++) { //dla każdego dnia filtruje przepisy które: a) są odpowiednim typem posiłku; b) mieszczącą się w przedziale kalorycznym; a następnie losuje jeden przepis z puli dla każdego dnia
+
+            const invalidMeal = { id: -1, name: "no such meal", kcal: 0, components: [{ name: "no components", number: -1, measure: "-" }], type: "breakfast lunch diner tea supper" }
+
             const breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
             const lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > this.state.kcal * .1 && item.kcal < this.state.kcal * .2);
             const diners = this.props.recepts.filter(item => item.type.includes("diner") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
             const teas = this.props.recepts.filter(item => item.type.includes("tea") && item.kcal > this.state.kcal * .05 && item.kcal < this.state.kcal * .15);
             const suppers = this.props.recepts.filter(item => item.type.includes("supper") && item.kcal > this.state.kcal * .15 && item.kcal < this.state.kcal * .25);
-            const breakfast = breakfasts[Math.floor(Math.random() * breakfasts.length)]
-            const lunch = lunchs[Math.floor(Math.random() * lunchs.length)]
-            const diner = diners[Math.floor(Math.random() * diners.length)]
-            const tea = teas[Math.floor(Math.random() * teas.length)]
-            const supper = suppers[Math.floor(Math.random() * suppers.length)]
+
+            const breakfast = breakfasts.length === 0 ? invalidMeal : breakfasts[Math.floor(Math.random() * breakfasts.length)]//JAK SPRAWDZIĆ CZY WYSZUKAŁO PRZAWIDŁOWY PRZEPIS? jak length === 0 to nie wyszykało
+            const lunch = breakfasts.length === 0 ? invalidMeal : lunchs[Math.floor(Math.random() * lunchs.length)]
+            const diner = breakfasts.length === 0 ? invalidMeal : diners[Math.floor(Math.random() * diners.length)]
+            const tea = breakfasts.length === 0 ? invalidMeal : teas[Math.floor(Math.random() * teas.length)]
+            const supper = breakfasts.length === 0 ? invalidMeal : suppers[Math.floor(Math.random() * suppers.length)]
+
             const kcal = (breakfast.kcal + lunch.kcal + diner.kcal + tea.kcal + supper.kcal);
             const day = {
                 breakfast,

@@ -122,9 +122,10 @@ class CreateRecept extends Component {
         })
     }
 
-    handleSelectProduct = (e) => {
+    handleSelectProduct = (e) => { //po wyborze produktu, kiedy wpisuję kolejne litery, program zachowuje się tak jakby szukał produktu, ale nie ma prawa bo nie ma takiej nazwy w liście
         const arr = this.state.addedProducts;
         const element = this.state.products.filter(product => product.name.toLowerCase() === e.target.value.toLowerCase())
+        element[0].number = 1
         arr[this.state.addedProductIndex] = element[0];
         this.setState({
             addedProducts: arr,
@@ -148,40 +149,42 @@ class CreateRecept extends Component {
         this.state.addedProducts.forEach(product => kcal += product.kcal * product.number)
         return (
             <div className="createReceptForm">
-                <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="Recept Name" />
+                <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
                 <div className="multiselect">
                     <div className="selectBox" onClick={this.handleShowCheckboxes}>
                         <select>
-                            <option>Select recept types</option>
+                            <option>Wybierz typ dania</option>
                         </select>
                         <div className="overSelect"></div>
                     </div>
                     {!this.state.expanded ? null : <div className="checkboxes">
                         <label htmlFor="breakfast">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Breakfast</label>
+                            <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
                         <label htmlFor="lunch">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Lunch</label>
+                            <input onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Drugie śniadanie</label>
                         <label htmlFor="diner">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Diner</label>
+                            <input onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Obiad</label>
                         <label htmlFor="tea">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Tea</label>
+                            <input onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Podwieczorek</label>
                         <label htmlFor="supper">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Supper</label>
+                            <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
                     </div>}
                 </div>
 
-                <button className="createReceptButtons" onClick={this.handleAddProduct}>add product</button>
                 <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
                     <li className="addProductsItem" key={index}>
                         <input className="addProductsItemName" id={index} onChange={this.handleChangeExactProduct} onFocus={this.state.addedProductIndex !== index ? () => { this.handleSetIndex(index) } : null} type="text" value={product.name} />
                         <div>{this.state.addedProductIndex === this.handleCheckProductIndex(index) && this.state.addedProducts[this.state.addedProductIndex].name.length > 2 ? <ul>{inputSearch.map((product, index) => <li key={index}><button onClick={(e) => this.handleSelectProduct(e)} value={product.name}>{product.name}</button></li>)}</ul> : null}</div>
                         <input className="addProductsItemNumber" id={index} onChange={this.handleChangeExactProduct} type="number" value={product.number} /><p>{product.measure}</p>
-                        <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>X</button>
+                        <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
                     </li>))}
                 </ul>
+
+                <button className="createReceptButtons" onClick={this.handleAddProduct}>dodaj produkt</button>
+
                 <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5"></textarea>
                 <p>kcal: {kcal}</p>
-                <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>Add your new recept</button>
+                <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
         )
     }
