@@ -5,8 +5,9 @@ const Recept = (props) => {
     return (
         <div>
             <h1>{props.recept.name}</h1>
-            <div><h2>Components:</h2><ul>{components}</ul></div>
-            <div><h2>Recept:</h2><p>{props.recept.recept}</p></div>
+            <div><h2>Składniki:</h2><ul>{components}</ul></div>
+            <div><h2>Przepis:</h2><p>{props.recept.recept}</p></div>
+            <div><h2>Kcal:</h2><p>{props.recept.kcal}</p></div>
         </div>
     )
 }

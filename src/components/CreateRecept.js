@@ -184,6 +184,7 @@ class CreateRecept extends Component {
 
                 <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5"></textarea>
                 <p>kcal: {kcal}</p>
+
                 <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
         )

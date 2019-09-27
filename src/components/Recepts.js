@@ -36,34 +36,34 @@ class Recepts extends Component {
         const recepts = this.props.recepts.filter(recept => (recept.name.toLowerCase().includes(this.state.searchRecept.toLowerCase()) && recept.type.includes(this.state.mealTypeFilter)));
         return (
             <div>
-                <h2 className="selectedComponentName">Recepts</h2>
+                <h2 className="selectedComponentName">Przepisy</h2>
                 <div className="receptsMenu">
                     <div className="leftSide">
-                        <button className="createReceptButton" onClick={this.handleCreateRecept}>Create new recept</button>
+                        <button className="createReceptButton" onClick={this.handleCreateRecept}>dodaj nowy przepis</button>
                         <div className="searchReceptSection">
                             <form>
-                                <label>Search</label>
+                                <label>Szukaj</label>
                                 <input className="searchRecept" onChange={this.handleSearchRecept} value={this.state.searchRecept}></input>
                             </form>
                             <form onChange={this.handleDishFilter}>
-                                <label>Meal type</label>
+                                <label>Rodzaj przepisu</label>
                                 <select className="setMealType">
                                     <option value=""></option>
-                                    <option value="breakfast">Breakfast</option>
-                                    <option value="lunch">Lunch</option>
-                                    <option value="diner">Diner</option>
-                                    <option value="tea">Tea</option>
-                                    <option value="supper">Supper</option>
+                                    <option value="breakfast">Śniadanie</option>
+                                    <option value="lunch">Drugie śniadanie</option>
+                                    <option value="diner">Obiad</option>
+                                    <option value="tea">Podwieczorek</option>
+                                    <option value="supper">Kolacja</option>
                                 </select>
                             </form>
                         </div>
                         <ul className="receptList">
-                            {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{recept.kcal} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Show</button></li>)}
+                            {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{recept.kcal} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button></li>)}
                         </ul>
                     </div>
                     <div className="rightSide">
                         {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept products={this.props.products} id={this.props.recepts.length} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} />) : <h2>
-                            Choose recipe or create a new one to display</h2>}
+                            Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
                     </div>
                 </div>
             </div>
