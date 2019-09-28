@@ -71,3 +71,24 @@
 .addReceptTextField{
   margin: 20px 0;
 }
+
+.addProductsAutocompleteList{
+  border: 2px solid #ccc;
+  position: absolute;
+}
+.addProductsAutocompleteList button:nth-child(odd){
+  text-align: left;
+  width: 100%;
+  display: block;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+ }
+.addProductsAutocompleteList button:nth-child(even){
+  text-align: left;
+  width: 100%;
+  display: block;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
