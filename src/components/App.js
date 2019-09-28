@@ -74,7 +74,7 @@ class App extends Component {
             </nav>
           </div>
           <div className="selectedOption">
-            <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts} products={this.state.products} recepts={this.state.recepts} />} />
+            <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
             <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus} recepts={this.state.recepts} menus={this.state.menus} />} />
             <Route path="/shopinglist" component={ShopingList} />
             <Route path="/fridge" component={Fridge} />

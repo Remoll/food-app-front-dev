@@ -16,7 +16,8 @@ class CreateRecept extends Component {
         addedProducts: [],
         newProduct: { name: "", measure: "", kcal: "", number: "" },
         addedProductIndex: -1,
-        addedRecept: ""
+        addedRecept: "",
+        refreshReceptsBase: false
     }
 
     handleShowCheckboxes = () => {
@@ -135,7 +136,7 @@ class CreateRecept extends Component {
             headers: {
                 'Content-Type': 'application/json',
             }
-        })
+        }).then(this.props.upgradeRecepts)
         this.setState({
             addedReceptName: "",
             expanded: false,
@@ -146,6 +147,7 @@ class CreateRecept extends Component {
             supper: false,
             addedProducts: [{ name: "", measure: "", kcal: "", number: "" }],
             addedRecept: "",
+            refreshReceptsBase: true
         })
     }
 
