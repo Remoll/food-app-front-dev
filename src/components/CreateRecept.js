@@ -62,7 +62,6 @@ class CreateRecept extends Component {
             const newProduct = this.state.products.filter(produkt => produkt.name === this.state.newProduct.name)[0];
             let addedProducts = this.state.addedProducts
             addedProducts.push(newProduct)
-            console.log(newProduct)
             this.setState({
                 addedProducts,
                 newProduct: { name: "", measure: "", kcal: "", number: "" },
