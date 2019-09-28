@@ -58,7 +58,7 @@ class Recepts extends Component {
                             </form>
                         </div>
                         <ul className="receptList">
-                            {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{recept.kcal} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button></li>)}
+                            {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button></li>)}
                         </ul>
                     </div>
                     <div className="rightSide">

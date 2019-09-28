@@ -144,7 +144,7 @@ class CreateRecept extends Component {
             diner: false,
             tea: false,
             supper: false,
-            addedProducts: [{ name: "", measure: "", kcal: "", number: "" }],
+            addedProducts: [],
             addedRecept: "",
             refreshReceptsBase: true
         })
@@ -242,8 +242,7 @@ class CreateRecept extends Component {
                 <button className="createReceptButtons" onClick={this.handleAddProduct}>dodaj produkt</button>
 
                 <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
-                <p>kcal: {Math.round(Math.round(kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>{//zaokrągla kalorie do 2 miejsc po przecinku
-                }
+                <p>kcal: {Math.round(Math.round(kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
 
                 <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
