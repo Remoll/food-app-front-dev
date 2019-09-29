@@ -10,3 +10,8 @@
     background-color: #fff;
     border: 2px solid #000
   }
+
+.menuGener label{
+    display: block;
+    text-align: left
+}

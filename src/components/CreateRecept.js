@@ -227,15 +227,16 @@ class CreateRecept extends Component {
                             <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
                     </div>}
                 </div>
-
-                <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
-                    <li className="addProductsItem" key={index}>
-                        <h3 className="addProductsItemName" id={index}>{product.name.toUpperCase()}</h3>
-                        <h3 className="addProductsItemNumber" id={index}>{product.number} {product.measure}</h3>
-                        <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
-                    </li>))}
-                </ul>
-
+                <div>
+                    <h2>Składniki: </h2>
+                    <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
+                        <li className="addProductsItem" key={index}>
+                            <h3 className="addProductsItemName" id={index}>{product.name.toUpperCase()}</h3>
+                            <h3 className="addProductsItemNumber" id={index}>{product.number} {product.measure}</h3>
+                            <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
+                        </li>))}
+                    </ul>
+                </div>
                 <input className="addProductsItemName" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
                 {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
                 <input className="addProductsItemNumber" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} /><p>{this.state.newProduct.measure}</p>

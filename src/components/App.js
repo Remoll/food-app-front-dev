@@ -73,7 +73,7 @@ class App extends Component {
           </div>
           <div className="selectedOption">
             <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
-            <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus} recepts={this.state.recepts} menus={this.state.menus} />} />
+            <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
             <Route path="/shopinglist" component={ShopingList} />
           </div>
           <div className="rightBorder"></div>

@@ -39,13 +39,23 @@ class Menu extends Component {
                 <div>
                     {this.props.menu.days.map((day, index) => (
                         <div>
-                            <h3>Day {index + 1} kcal: {Math.round(Math.round((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal) * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h3>
+                            <h3>Dzień {index + 1} kcal: {Math.round(Math.round((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal) * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h3>
                             <ul>
-                                <li key={index + "1"}>{day.breakfast.name} kcal: {Math.round(Math.round(day.breakfast.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}<button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>Show</button></li>
-                                <li key={index + "2"}>{day.lunch.name} kcal: {Math.round(Math.round(day.lunch.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}<button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>Show</button></li>
-                                <li key={index + "3"}>{day.diner.name} kcal: {Math.round(Math.round(day.diner.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}<button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recepts)}>Show</button></li>
-                                <li key={index + "4"}>{day.tea.name} kcal: {Math.round(Math.round(day.tea.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}<button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recepts)}>Show</button></li>
-                                <li key={index + "5"}>{day.supper.name} kcal: {Math.round(Math.round(day.supper.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}<button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recepts)}>Show</button></li>
+                                <li key={index + "1"}>{day.breakfast.name} kcal: {Math.round(Math.round(day.breakfast.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>Szczegóły</button>
+                                </li>
+                                <li key={index + "2"}>{day.lunch.name} kcal: {Math.round(Math.round(day.lunch.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>Szczegóły</button>
+                                </li>
+                                <li key={index + "3"}>{day.diner.name} kcal: {Math.round(Math.round(day.diner.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recepts)}>Szczegóły</button>
+                                </li>
+                                <li key={index + "4"}>{day.tea.name} kcal: {Math.round(Math.round(day.tea.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recepts)}>Szczegóły</button>
+                                </li>
+                                <li key={index + "5"}>{day.supper.name} kcal: {Math.round(Math.round(day.supper.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recepts)}>Szczegóły</button>
+                                </li>
                             </ul>
                         </div>))}
                 </div>
@@ -53,8 +63,8 @@ class Menu extends Component {
                     <div className="showReceptInMenuList">
                         <button onClick={this.handleExitRecept}>X</button>
                         <h1>{this.state.showReceptName}</h1>
-                        <div><h2>Components:</h2><ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}</ul></div>
-                        <div><h2>Recept:</h2><p>{this.state.showReceptRecepts}</p></div>
+                        <div><h2>Składniki:</h2><ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}</ul></div>
+                        <div><h2>Przepis:</h2><p>{this.state.showReceptRecepts}</p></div>
                     </div> : null}
             </div>
         )

@@ -32,20 +32,19 @@ class Menus extends Component {
                 <h2 className="selectedComponentName">Menu</h2>
                 <div className="receptsMenu">
                     <div className="leftSide">
-                        <button className="createReceptButton" onClick={this.handleCreateMenu}>Create new menu</button>
+                        <button className="createReceptButton" onClick={this.handleCreateMenu}>dodaj nowy jadłospis</button>
                         <div className="searchReceptSection">
                             <form>
-                                <label>Search</label>
+                                <label>Szukaj</label>
                                 <input className="searchRecept" onChange={this.handleSearchMenu} value={this.state.searchMenu}></input>
                             </form>
                         </div>
                         <ul className="receptList">
-                            {menus.map(menu => <li className="receptListItem" key={menu.id}><p className="receptListItemName">{menu.name}</p>, days: {menu.days.length} <button className="receptListItemButton" id={menu.id} onClick={this.handleShowMenu}>Show</button></li>)}
+                            {menus.map(menu => <li className="receptListItem" key={menu.id}><p className="receptListItemName">{menu.name}</p>, days: {menu.days.length} <button className="receptListItemButton" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button></li>)}
                         </ul>
                     </div>
                     <div className="rightSide">
-                        {this.state.showMenu ? (this.state.activeMenu === -1 ? <CreateMenu upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} /> : <Menu menu={this.props.menus[this.state.activeMenu]} />) : <h2>
-                            Choose menu or create a new one to display</h2>}
+                        {this.state.showMenu ? (this.state.activeMenu === -1 ? <CreateMenu upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} /> : <Menu menu={this.props.menus[this.state.activeMenu]} />) : <h2>Wybierz istniejący jadłospis lub stwórz nowy aby wyświetlić</h2>}
                     </div>
                 </div>
             </div>

@@ -3,14 +3,14 @@ import '../style/CreateMenu.css';
 
 class CreateMenu extends Component {
     state = {
-        name: "new menu",
-        days: 1,
-        kcal: 2000,
-        breakfast: true,
-        lunch: true,
-        diner: true,
-        tea: true,
-        supper: true,
+        name: "",
+        days: "",
+        kcal: "",
+        // breakfast: true,
+        // lunch: true,
+        // diner: true,
+        // tea: true,
+        // supper: true,
         newMenu: "",
         editMeal: false,
         editMealIndex: "",
@@ -25,7 +25,7 @@ class CreateMenu extends Component {
         })
     }
     handleDeaysNumber = (e) => {
-        if (e.target.value < 1) return
+        if (e.target.value < 0) return
         this.setState({
             days: e.target.value
         })
@@ -35,31 +35,44 @@ class CreateMenu extends Component {
             kcal: e.target.value
         })
     }
-    handleMealsTypes = (e) => {
-        if (e.target.id === "breakfast") {
-            this.setState({
-                breakfast: e.target.checked
-            })
-        } else if (e.target.id === "lunch") {
-            this.setState({
-                lunch: e.target.checked
-            })
-        } else if (e.target.id === "diner") {
-            this.setState({
-                diner: e.target.checked
-            })
-        } else if (e.target.id === "tea") {
-            this.setState({
-                tea: e.target.checked
-            })
-        } else if (e.target.id === "supper") {
-            this.setState({
-                supper: e.target.checked
-            })
-        }
-    }
+    // handleMealsTypes = (e) => {
+    //     if (e.target.id === "breakfast") {
+    //         this.setState({
+    //             breakfast: e.target.checked
+    //         })
+    //     } else if (e.target.id === "lunch") {
+    //         this.setState({
+    //             lunch: e.target.checked
+    //         })
+    //     } else if (e.target.id === "diner") {
+    //         this.setState({
+    //             diner: e.target.checked
+    //         })
+    //     } else if (e.target.id === "tea") {
+    //         this.setState({
+    //             tea: e.target.checked
+    //         })
+    //     } else if (e.target.id === "supper") {
+    //         this.setState({
+    //             supper: e.target.checked
+    //         })
+    //     }
+    // }
+
     handleCreateNewMenuButton = (e) => {
         e.preventDefault();
+        if (this.state.name === "") {
+            alert("Nie podałeś nazwy jadłospisu")
+            return
+        }
+        if (this.state.days === "") {
+            alert("Nie podałeś ilości dni")
+            return
+        }
+        if (this.state.kcal === "") {
+            alert("Nie podałeś dziennej kaloryczności")
+            return
+        }
         const newMenu = {
             id: this.props.menus.length + 1,
             name: this.state.name,
@@ -96,6 +109,7 @@ class CreateMenu extends Component {
             newMenu
         })
     }
+
     handleEditMealShow = (index, type) => {
         let item;
         if (type === "breakfast") {
@@ -116,18 +130,21 @@ class CreateMenu extends Component {
             editMealItem: item
         })
     }
+
     handleEditMealInputChange = (e) => {
         this.setState({
             editMealInput: e.target.value,
             editMealButton: true
         })
     }
+
     handleEditMealSelectButton = (e) => {
         this.setState({
             editMealInput: e.target.value,
             editMealButton: false
         })
     }
+
     handleEditMealConfirmButton = () => {
         const type = this.state.editMealType;
         const newMenu = this.state.newMenu;
@@ -154,11 +171,13 @@ class CreateMenu extends Component {
 
         })
     }
+
     handleEditMealCancelButton = () => {
         this.setState({
             editMeal: false
         })
     }
+
     handleConfirmMenu = () => {
         fetch('http://localhost:5000/addmenu', {
             method: 'POST',
@@ -166,7 +185,7 @@ class CreateMenu extends Component {
             headers: {
                 'Content-Type': 'application/json',
             }
-        });
+        }).then(this.props.upgradeMenus);
         this.setState({
             newMenu: ""
         })
@@ -178,12 +197,12 @@ class CreateMenu extends Component {
         return (
             <div>
                 <div>
-                    <h1>CreateMenu</h1>
-                    <form>
-                        <label htmlFor="name"><input onChange={this.handleMenuName} value={this.state.name} type="text" id="name"></input>Name</label>
-                        <label htmlFor="days"><input onChange={this.handleDeaysNumber} value={this.state.days} type="number" id="days"></input>Days</label>
-                        <label htmlFor="kcal"><input onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal"></input>Kcal per day</label>
-                        <label htmlFor="breakfast">
+                    <form className="menuGener">
+                        <label htmlFor="name">Nazwa: <input onChange={this.handleMenuName} value={this.state.name} type="text" id="name" placeholder="nazwij jadłospis"></input></label>
+                        <label htmlFor="days">Dni: <input onChange={this.handleDeaysNumber} value={this.state.days} type="number" id="days" placeholder="wybierz ilość dni"></input></label>
+                        <label htmlFor="kcal">Kcal: <input onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal" placeholder="wybierz dzienną kaloryczność"></input></label>
+
+                        {/* <label htmlFor="breakfast">
                             <input onChange={this.handleMealsTypes} checked={this.state.breakfast} type="checkbox" id="breakfast" />Breakfast</label>
                         <label htmlFor="lunch">
                             <input onChange={this.handleMealsTypes} checked={this.state.lunch} type="checkbox" id="lunch" />Lunch</label>
@@ -192,38 +211,54 @@ class CreateMenu extends Component {
                         <label htmlFor="tea">
                             <input onChange={this.handleMealsTypes} checked={this.state.tea} type="checkbox" id="tea" />Tea</label>
                         <label htmlFor="supper">
-                            <input onChange={this.handleMealsTypes} checked={this.state.supper} type="checkbox" id="supper" />Supper</label>
-                        <button onClick={this.handleCreateNewMenuButton}>Create menu</button>
+                            <input onChange={this.handleMealsTypes} checked={this.state.supper} type="checkbox" id="supper" />Supper</label> */}
+
+                        <button onClick={this.handleCreateNewMenuButton}>Generuj jadłospis</button>
                     </form>
                 </div>
                 {
                     newMenu ?
                         <div>{this.state.editMeal ?
                             <div className="changeReceptOnNewMenu">
-                                <p>Change: {this.state.editMealItem} to:</p>
-                                <input value={this.state.editMealInput} onChange={this.handleEditMealInputChange}></input>
+                                <p>Zamieniasz: {this.state.editMealItem}, na:</p>
+                                <input value={this.state.editMealInput} onChange={this.handleEditMealInputChange} placeholder="szukaj"></input>
                                 <div>{this.state.editMealButton && this.state.editMealInput.length > 2 ? <ul>{inputSearch.map((recept, index) => <li key={index}><button onClick={this.handleEditMealSelectButton} value={recept.name}>{recept.name}</button></li>)}</ul> : null}</div>
-                                <button onClick={this.handleEditMealConfirmButton}>Confirm change</button><button onClick={this.handleEditMealCancelButton}>Cancel</button>
+                                <button onClick={this.handleEditMealConfirmButton}>ZAMIEŃ</button>
+                                <button onClick={this.handleEditMealCancelButton}>Anuluj</button>
 
                             </div> : null}
-                            <button onClick={this.handleConfirmMenu}>Confirm Menu</button>
                             <h2>{newMenu.name}</h2>
                             <div>
                                 {newMenu.days.map((day, index) => (
                                     <div>
-                                        <h3>Day {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
+                                        <h3>Dzień {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
                                         <ul>
-                                            <li key={index + "1"}>Breakfast: {day.breakfast.name} kcal: {day.breakfast.kcal}<button onClick={() => this.handleEditMealShow(index, "breakfast")}>edit</button></li>
-                                            <li key={index + "2"}>Lunch: {day.lunch.name} kcal: {day.lunch.kcal}<button onClick={() => this.handleEditMealShow(index, "lunch")}>edit</button></li>
-                                            <li key={index + "3"}>Diner: {day.diner.name} kcal: {day.diner.kcal}<button onClick={() => this.handleEditMealShow(index, "diner")}>edit</button></li>
-                                            <li key={index + "4"}>Tea: {day.tea.name} kcal: {day.tea.kcal}<button onClick={() => this.handleEditMealShow(index, "tea")}>edit</button></li>
-                                            <li key={index + "5"}>Supper: {day.supper.name} kcal: {day.supper.kcal}<button onClick={() => this.handleEditMealShow(index, "supper")}>edit</button></li>
+                                            <li key={index + "1"}>Śniadanie: {day.breakfast.name} kcal: {day.breakfast.kcal}
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>zamień</button>
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                            </li>
+                                            <li key={index + "2"}>Drugie śniadanie: {day.lunch.name} kcal: {day.lunch.kcal}
+                                                <button onClick={() => this.handleEditMealShow(index, "lunch")}>zamień</button>
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                            </li>
+                                            <li key={index + "3"}>Obiad: {day.diner.name} kcal: {day.diner.kcal}
+                                                <button onClick={() => this.handleEditMealShow(index, "diner")}>zamień</button>
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                            </li>
+                                            <li key={index + "4"}>Podwieczorek: {day.tea.name} kcal: {day.tea.kcal}
+                                                <button onClick={() => this.handleEditMealShow(index, "tea")}>zamień</button>
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                            </li>
+                                            <li key={index + "5"}>Kolacja: {day.supper.name} kcal: {day.supper.kcal}
+                                                <button onClick={() => this.handleEditMealShow(index, "supper")}>zamień</button>
+                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                            </li>
                                         </ul>
                                     </div>))}
                             </div>
+                            <button onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
                         </div> : null
                 }
-
             </div >
         )
     }

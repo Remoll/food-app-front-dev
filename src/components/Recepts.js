@@ -62,8 +62,7 @@ class Recepts extends Component {
                         </ul>
                     </div>
                     <div className="rightSide">
-                        {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} />) : <h2>
-                            Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
+                        {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} />) : <h2>Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
                     </div>
                 </div>
             </div>

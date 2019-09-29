@@ -63,6 +63,8 @@
 .receptList{
     padding: 20px 0;
     list-style: none;
+    overflow: scroll;
+    height: 400px;
 }
 
 .receptListItem{
