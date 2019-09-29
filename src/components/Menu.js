@@ -24,6 +24,7 @@ class Menu extends Component {
             })
         }
     }
+
     handleExitRecept = () => {
         this.setState({
             showRecept: false,
@@ -63,7 +64,10 @@ class Menu extends Component {
                     <div className="showReceptInMenuList">
                         <button onClick={this.handleExitRecept}>X</button>
                         <h1>{this.state.showReceptName}</h1>
-                        <div><h2>Składniki:</h2><ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}</ul></div>
+                        <div>
+                            <h2>Składniki:</h2>
+                            <ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}</ul>
+                        </div>
                         <div><h2>Przepis:</h2><p>{this.state.showReceptRecepts}</p></div>
                     </div> : null}
             </div>

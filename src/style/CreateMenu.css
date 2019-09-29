@@ -15,3 +15,8 @@
     display: block;
     text-align: left
 }
+
+.ListOfChangeReceptInNewMenu{
+    overflow: scroll;
+    height: 400px;
+}

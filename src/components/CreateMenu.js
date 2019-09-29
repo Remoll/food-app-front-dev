@@ -18,6 +18,7 @@ class CreateMenu extends Component {
         editMealItem: "",
         editMealInput: "",
         editMealButton: false,
+        showRecept: false
     }
     handleMenuName = (e) => {
         this.setState({
@@ -145,10 +146,11 @@ class CreateMenu extends Component {
         })
     }
 
-    handleEditMealConfirmButton = () => {
+    handleEditMealConfirmButton = (e) => {
+        e.preventDefault();
         const type = this.state.editMealType;
         const newMenu = this.state.newMenu;
-        const mealName = this.props.recepts.filter(recept => recept.name === this.state.editMealInput)
+        const mealName = this.props.recepts.filter(recept => recept.name === e.target.value)
         if (mealName.length === 0) {
             alert("Choose the right recipe");
             return;
@@ -187,7 +189,39 @@ class CreateMenu extends Component {
             }
         }).then(this.props.upgradeMenus);
         this.setState({
-            newMenu: ""
+            newMenu: "",
+            name: "",
+            days: "",
+            kcal: "",
+        })
+    }
+
+    handleShowRecept = (name, components, recepts) => {
+        console.log("elo")
+        if (this.state.showRecept && name === this.state.showReceptName) {
+            this.setState({
+                showRecept: false,
+                showReceptName: "",
+                showReceptComponents: "",
+                showReceptRecepts: ""
+            })
+        } else {
+
+            this.setState({
+                showRecept: true,
+                showReceptName: name,
+                showReceptComponents: components,
+                showReceptRecepts: recepts
+            })
+        }
+    }
+
+    handleExitRecept = () => {
+        this.setState({
+            showRecept: false,
+            showReceptName: "",
+            showReceptComponents: "",
+            showReceptRecepts: ""
         })
     }
 
@@ -220,13 +254,16 @@ class CreateMenu extends Component {
                     newMenu ?
                         <div>{this.state.editMeal ?
                             <div className="changeReceptOnNewMenu">
-                                <p>Zamieniasz: {this.state.editMealItem}, na:</p>
+                                <button onClick={this.handleEditMealCancelButton}>X</button>
+                                <p>Zamień: {this.state.editMealItem}, na:</p>
                                 <input value={this.state.editMealInput} onChange={this.handleEditMealInputChange} placeholder="szukaj"></input>
-                                <div>{this.state.editMealButton && this.state.editMealInput.length > 2 ? <ul>{inputSearch.map((recept, index) => <li key={index}><button onClick={this.handleEditMealSelectButton} value={recept.name}>{recept.name}</button></li>)}</ul> : null}</div>
-                                <button onClick={this.handleEditMealConfirmButton}>ZAMIEŃ</button>
-                                <button onClick={this.handleEditMealCancelButton}>Anuluj</button>
+                                <div className="ListOfChangeReceptInNewMenu">{<ul>{inputSearch.map((recept, index) => <li key={index}><p>{recept.name} kcal: {Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                                    <button onClick={this.handleEditMealConfirmButton} value={recept.name}>Wybierz</button>
+                                    <button onClick={() => this.handleShowRecept(recept.name, recept.components, recept.recepts)}>Szczegóły</button></li>)}</ul>}
+                                </div>
 
                             </div> : null}
+                            <button onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
                             <h2>{newMenu.name}</h2>
                             <div>
                                 {newMenu.days.map((day, index) => (
@@ -235,28 +272,41 @@ class CreateMenu extends Component {
                                         <ul>
                                             <li key={index + "1"}>Śniadanie: {day.breakfast.name} kcal: {day.breakfast.kcal}
                                                 <button onClick={() => this.handleEditMealShow(index, "breakfast")}>zamień</button>
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                                <button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>szczegóły</button>
                                             </li>
                                             <li key={index + "2"}>Drugie śniadanie: {day.lunch.name} kcal: {day.lunch.kcal}
                                                 <button onClick={() => this.handleEditMealShow(index, "lunch")}>zamień</button>
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                                <button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>szczegóły</button>
                                             </li>
                                             <li key={index + "3"}>Obiad: {day.diner.name} kcal: {day.diner.kcal}
                                                 <button onClick={() => this.handleEditMealShow(index, "diner")}>zamień</button>
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                                <button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recepts)}>szczegóły</button>
                                             </li>
                                             <li key={index + "4"}>Podwieczorek: {day.tea.name} kcal: {day.tea.kcal}
                                                 <button onClick={() => this.handleEditMealShow(index, "tea")}>zamień</button>
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                                <button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recepts)}>szczegóły</button>
                                             </li>
                                             <li key={index + "5"}>Kolacja: {day.supper.name} kcal: {day.supper.kcal}
                                                 <button onClick={() => this.handleEditMealShow(index, "supper")}>zamień</button>
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>szczegóły</button>
+                                                <button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recepts)}>szczegóły</button>
                                             </li>
                                         </ul>
                                     </div>))}
                             </div>
                             <button onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
+                            {this.state.showRecept ?
+                                <div className="showReceptInMenuList" >
+                                    <button onClick={this.handleExitRecept}>X</button>
+                                    <h1>{this.state.showReceptName}</h1>
+                                    <div>
+                                        <h2>Składniki:</h2>
+                                        <ul>{this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>)}</ul>
+                                    </div>
+                                    <div>
+                                        <h2>Przepis:</h2>
+                                        <p>{this.state.showReceptRecepts}</p>
+                                    </div>
+                                </div> : null}
                         </div> : null
                 }
             </div >
