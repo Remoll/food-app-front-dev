@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Menu from './Menu';
 import CreateMenu from './CreateMenu';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
+import ShopingList from './ShopingList';
 
 class Menus extends Component {
     state = {
@@ -40,7 +42,10 @@ class Menus extends Component {
                             </form>
                         </div>
                         <ul className="receptList">
-                            {menus.map(menu => <li className="receptListItem" key={menu.id}><p className="receptListItemName">{menu.name}</p>, days: {menu.days.length} <button className="receptListItemButton" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button></li>)}
+                            {menus.map(menu => <li className="receptListItem" key={menu.id}>
+                                <p className="receptListItemName">{menu.name}</p>, days: {menu.days.length}
+                                <Link to="/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(menu)} >Stwórz listę zakupów</Link>
+                                <button className="receptListItemButton" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button></li>)}
                         </ul>
                     </div>
                     <div className="rightSide">

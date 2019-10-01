@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Recept from './Recept';
 import CreateRecept from './CreateRecept';
 import '../style/Recepts.css';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
+import ShopingList from './ShopingList';
 
 class Recepts extends Component {
     state = {
@@ -58,7 +60,12 @@ class Recepts extends Component {
                             </form>
                         </div>
                         <ul className="receptList">
-                            {recepts.map(recept => <li className="receptListItem" key={recept.id}><p className="receptListItemName">{recept.name}</p>, kcal:{Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button></li>)}
+                            {recepts.map(recept => (
+                                <li className="receptListItem" key={recept.id}>
+                                    <p className="receptListItemName">{recept.name}</p>, kcal:{Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}
+                                    <Link to="/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(recept)} >Stwórz listę zakupów</Link>
+                                    <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button>
+                                </li>))}
                         </ul>
                     </div>
                     <div className="rightSide">

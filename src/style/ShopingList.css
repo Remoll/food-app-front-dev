@@ -1,0 +1,7 @@
+.shopingList li p{
+    display: inline-block;
+}
+
+.shopingList li input{
+    display: inline-block;
+}
