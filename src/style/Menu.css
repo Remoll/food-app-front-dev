@@ -1,12 +1,150 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+.menuFile{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    overflow: scroll;
+}
+
+.nameInMenuFile{
+    padding-top: 20px;
+    font-size: 32px;
+    margin-bottom: 10px
+}
+
+.daysInMenuFile{
+    padding-bottom: 100px;
+}
+
+.dayInMenuFile:first-child{
+    padding: 5px 10px 0;
+    border-top: 2px solid #000;
+}
+
+.dayInMenuFile{
+    padding: 20px 10px 0;
+    border-bottom: 2px solid #000;
+}
+
+.dayInMenuFile:last-child{
+    border-bottom: none;
+}
+
+.daysNumbersInMenuFile{
+    margin-bottom: 5px
+}
+
+.daysMealsInMenuFile{
+    list-style: none;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.daysMealsInMenuFile li:first-child{
+    padding-top: 10px;
+    border-top: 1px dotted #000;
+    margin-top: 20px;
+}
+
+.daysMealsInMenuFile li{
+    padding: 30px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dotted #000
+}
+
+.daysMealsInMenuFile li:last-child{
+    border-bottom: none;
+}
+
+.daysMealsInMenuFile li p:nth-child(1){
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.daysMealsInMenuFile li p{
+    font-weight: bold;
+}
+
+.daysMealsInMenuFile li p:nth-child(3){
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.daysMealsInMenuFile li button{
+    flex-basis: 45%;
+    background-color: #D1B764;
+    padding: 5px 5px;
+    border: 1px solid #333; 
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    text-decoration: none;
+    font-size: 12px;
+}
+
 .showReceptInMenuList{
     background-color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid #000
+    position: fixed;
+    height: calc(100vh - 133px);
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin: 62px 0 71px 0;
+    overflow: scroll;
+}
+
+.showReceptInMenuList{
+    padding: 0 10px
+}
+
+.receptNameInMenuFile{
+    margin: 10px auto 20px;
+    text-align: center;
+}
+
+.receptComponentsInMenuFile{
+    text-align: left;
+    padding: 20px 0 40px;
+}
+
+.receptComponentsInMenuFile h2{
+    padding-bottom: 20px;
+}
+
+.receptComponentsInMenuFile li{
+    font-size: 16px;
+    padding-bottom: 10px;
+    text-align: left;
+    border-bottom: 1px dotted #000
+}
+
+.receptComponentsInMenuFile:nth-child(1){
+    padding-top: 30px
+}
+
+.receptReceptInMenuFile{
+    padding-bottom: 150px;
+    text-align: left;
+}
+
+.receptReceptInMenuFile h2{
+    padding-bottom: 20px;
+}
+
+.hideReceptInMenuListButton{
+    color: #D1B764;
+    border: none; 
+    background-color: white;
+    font-size: 50px;
+    position: fixed;
+    bottom: 80px;
+    right: 10px;
 }

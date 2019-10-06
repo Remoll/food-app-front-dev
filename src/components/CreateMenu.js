@@ -229,12 +229,14 @@ class CreateMenu extends Component {
         const { newMenu } = this.state;
         const inputSearch = this.props.recepts.filter(recept => recept.name.toLowerCase().includes(this.state.editMealInput.toLowerCase()));
         return (
-            <div>
+            <div className="createMenuFile">
+
                 <div>
+                    <p>Nazwij swój nowy jadłospis, określ ilośc dni i dzienną kaloryczność. Następnie kliknij 'Generuj jadłospis'</p>
                     <form className="menuGener">
-                        <label htmlFor="name">Nazwa: <input onChange={this.handleMenuName} value={this.state.name} type="text" id="name" placeholder="nazwij jadłospis"></input></label>
-                        <label htmlFor="days">Dni: <input onChange={this.handleDeaysNumber} value={this.state.days} type="number" id="days" placeholder="wybierz ilość dni"></input></label>
-                        <label htmlFor="kcal">Kcal: <input onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal" placeholder="wybierz dzienną kaloryczność"></input></label>
+                        <label htmlFor="name"><input onChange={this.handleMenuName} value={this.state.name} type="text" id="name" placeholder="nazwa"></input></label>
+                        <label htmlFor="days"><input onChange={this.handleDeaysNumber} value={this.state.days} type="number" id="days" placeholder="dni"></input></label>
+                        <label htmlFor="kcal"><input onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal" placeholder="kcal"></input></label>
 
                         {/* <label htmlFor="breakfast">
                             <input onChange={this.handleMealsTypes} checked={this.state.breakfast} type="checkbox" id="breakfast" />Breakfast</label>
@@ -250,9 +252,14 @@ class CreateMenu extends Component {
                         <button onClick={this.handleCreateNewMenuButton}>Generuj jadłospis</button>
                     </form>
                 </div>
+
                 {
                     newMenu ?
-                        <div>{this.state.editMeal ?
+                        <div className="generatedMenu">{this.state.editMeal ?
+
+
+
+                            //ZROBIĆ CSS
                             <div className="changeReceptOnNewMenu">
                                 <button onClick={this.handleEditMealCancelButton}>X</button>
                                 <p>Zamień: {this.state.editMealItem}, na:</p>
@@ -261,40 +268,73 @@ class CreateMenu extends Component {
                                     <button onClick={this.handleEditMealConfirmButton} value={recept.name}>Wybierz</button>
                                     <button onClick={() => this.handleShowRecept(recept.name, recept.components, recept.recepts)}>Szczegóły</button></li>)}</ul>}
                                 </div>
-
                             </div> : null}
-                            <button onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
-                            <h2>{newMenu.name}</h2>
-                            <div>
+
+
+
+
+                            <button className="createMenuConfirmButton" onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
+                            <h2 className="createMenuName">{newMenu.name}</h2>
+
+                            <div className="createMenuDays">
                                 {newMenu.days.map((day, index) => (
-                                    <div>
+                                    <div className="createMenuDay">
                                         <h3>Dzień {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
                                         <ul>
-                                            <li key={index + "1"}>Śniadanie: {day.breakfast.name} kcal: {day.breakfast.kcal}
-                                                <button onClick={() => this.handleEditMealShow(index, "breakfast")}>zamień</button>
-                                                <button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>szczegóły</button>
+                                            <li key={index + "1"}>
+                                                <p><span className="createMenuMealTypesName">Śniadanie</span> {day.breakfast.kcal} kcal</p>
+                                                <p className="createMenuMealName">{day.breakfast.name}</p>
+                                                <div className="createMenuDayButtonsSection">
+                                                    <button onClick={() => this.handleEditMealShow(index, "breakfast")}>zamień</button>
+                                                    <button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recepts)}>szczegóły</button>
+                                                </div>
                                             </li>
-                                            <li key={index + "2"}>Drugie śniadanie: {day.lunch.name} kcal: {day.lunch.kcal}
-                                                <button onClick={() => this.handleEditMealShow(index, "lunch")}>zamień</button>
-                                                <button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>szczegóły</button>
+                                            <li key={index + "2"}>
+                                                <p><span className="createMenuMealTypesName">Drugie śniadanie</span> {day.lunch.kcal} kcal</p>
+                                                <p className="createMenuMealName">{day.lunch.name}</p>
+                                                <div className="createMenuDayButtonsSection">
+                                                    <button onClick={() => this.handleEditMealShow(index, "lunch")}>zamień</button>
+                                                    <button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recepts)}>szczegóły</button>
+                                                </div>
                                             </li>
-                                            <li key={index + "3"}>Obiad: {day.diner.name} kcal: {day.diner.kcal}
-                                                <button onClick={() => this.handleEditMealShow(index, "diner")}>zamień</button>
-                                                <button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recepts)}>szczegóły</button>
+                                            <li key={index + "3"}>
+                                                <p><span className="createMenuMealTypesName">Obiad</span> {day.diner.kcal} kcal</p>
+                                                <p className="createMenuMealName">{day.diner.name}</p>
+                                                <div className="createMenuDayButtonsSection">
+                                                    <button onClick={() => this.handleEditMealShow(index, "diner")}>zamień</button>
+                                                    <button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recepts)}>szczegóły</button>
+                                                </div>
                                             </li>
-                                            <li key={index + "4"}>Podwieczorek: {day.tea.name} kcal: {day.tea.kcal}
-                                                <button onClick={() => this.handleEditMealShow(index, "tea")}>zamień</button>
-                                                <button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recepts)}>szczegóły</button>
+                                            <li key={index + "4"}>
+                                                <p><span className="createMenuMealTypesName">Podwieczorek</span> {day.tea.kcal} kcal</p>
+                                                <p className="createMenuMealName">{day.tea.name}</p>
+                                                <div className="createMenuDayButtonsSection">
+                                                    <button onClick={() => this.handleEditMealShow(index, "tea")}>zamień</button>
+                                                    <button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recepts)}>szczegóły</button>
+                                                </div>
                                             </li>
-                                            <li key={index + "5"}>Kolacja: {day.supper.name} kcal: {day.supper.kcal}
-                                                <button onClick={() => this.handleEditMealShow(index, "supper")}>zamień</button>
-                                                <button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recepts)}>szczegóły</button>
+                                            <li key={index + "5"}>
+                                                <p><span className="createMenuMealTypesName">Kolacja</span> {day.supper.kcal} kcal</p>
+                                                <p className="createMenuMealName">{day.supper.name}</p>
+                                                <div className="createMenuDayButtonsSection">
+                                                    <button onClick={() => this.handleEditMealShow(index, "supper")}>zamień</button>
+                                                    <button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recepts)}>szczegóły</button>
+                                                </div>
                                             </li>
                                         </ul>
+
                                     </div>))}
                             </div>
-                            <button onClick={this.handleConfirmMenu}>GOTOWE - DODAJ JADŁOSPIS</button>
+
                             {this.state.showRecept ?
+
+
+
+
+
+
+
+                                //ZROBIĆ CSS
                                 <div className="showReceptInMenuList" >
                                     <button onClick={this.handleExitRecept}>X</button>
                                     <h1>{this.state.showReceptName}</h1>
@@ -307,8 +347,13 @@ class CreateMenu extends Component {
                                         <p>{this.state.showReceptRecepts}</p>
                                     </div>
                                 </div> : null}
-                        </div> : null
+
+
+
+
+                        </div> : <h1>Tu wyświetli się wygenerowany jadłospis</h1>
                 }
+
             </div >
         )
     }

@@ -3,35 +3,64 @@
     margin: 0;
     box-sizing: border-box;
 }
-.selectedComponentName{
-    color: #D1B764;
-    background-color: #87083F;
-    font-family: 'Gloria Hallelujah', cursive;
-    padding: 50px 0;
-}
 
 .receptsMenu{
-    margin: 30px auto;
     display: flex;
-    width: 870px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 100%;
     font-family: 'Open Sans', sans-serif;
+    animation-name: swingRight;
+    animation-duration: .1s;
+}
+
+.receptsMenu.rightSideElo{
+    left: -100%;
+    animation-name: swingLeft;
+    animation-duration: .1s;
+}
+
+@keyframes swingLeft{
+    0% {left: 0}
+    100% {left: -100%}
+}
+
+@keyframes swingRight{
+    0% {left: -100%}
+    100% {left: 0}
 }
 
 .leftSide{
-    text-align: left;
-    padding-left: 10px;
-    width: 400px;
+    width: 100vw;
+    padding: 0 10px;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 .createReceptButton{
-    background-color: #fff;
-    padding: 5px 15px;
-    font-family: 'Open Sans', sans-serif;
-    border: 2px solid black; 
+    color: #D1B764;
+    border: none; 
+    background-color: white;
+    font-size: 50px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
 }
 
 .searchReceptSection{
-    padding-top: 20px; 
+    height: 20%;
+    padding: 20px 0;
+    text-align: left;
+    border-bottom: 2px solid #000
+}
+
+@media (max-width: 321px) and (orientation: portrait) {
+    .searchReceptSection{
+        height: 30%;
+    }
 }
 
 .searchReceptSection form{
@@ -61,32 +90,46 @@
 }
 
 .receptList{
-    padding: 20px 0;
     list-style: none;
     overflow: scroll;
-    height: 400px;
+    height: 85%;
+    padding-bottom: 200px;
 }
 
 .receptListItem{
-    padding-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0; 
+    border-bottom: 1px solid #333
 }
+
+.receptListItem:nth-child(odd){
+    background-color: #eee;
+}
+
 .receptListItemName{
-    display: inline-block;
     font-weight: bold;
+    padding-bottom: 10px;
 }
+
+.listButtonSection{
+    display: flex;
+    justify-content: space-around;
+}
+
 .receptListItemButton{
-    float: right;
-    background-color: #fff;
+    flex-basis: 45%;
+    background-color: #D1B764;
     padding: 5px 5px;
-    border: 2px solid black; 
+    border: 1px solid #333; 
     font-family: 'Open Sans', sans-serif;
-    color: #000;
+    color: #333;
     text-decoration: none;
     font-size: 12px;
 }
+
+
 .rightSide{
-    width: 390px;
-    padding-left: 10px;
-    margin-left: 10px;
-    border-left: 2px solid #000;
+    width: 100vw;
+    padding: 0 10px;
 }

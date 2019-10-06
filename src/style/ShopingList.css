@@ -1,7 +1,61 @@
-.shopingList li p{
-    display: inline-block;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.shopingList li input{
-    display: inline-block;
+.shopingListFile{
+    height: 100%;
+    width: 100%;
+}
+
+.shopingListName{
+    padding: 20px 10px;
+    font-size: 32pxs;
+}
+
+.shopingList{
+    list-style: none;
+    overflow: scroll;
+    height: 80%;
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+@media (max-width: 321px) and (orientation: portrait) {
+    .shopingListName{
+        padding: 10px 0;
+    }
+    
+    .shopingList{
+        height: 80%;
+        width: 100%;
+    }
+}
+
+.shopingListItemItem{
+    padding: 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.shopingListItemItem:nth-child(odd){
+    background-color: #eee;
+}
+
+.shopingListItemName{
+    text-align: left;
+    flex-grow: 1;
+    text-transform: uppercase;
+    font-size: 22px;
+}
+.shopingListItemNumber{
+    text-align: right;
+    font-size: 22px;
+}
+
+.shopingListItemCheckbox{
+    transform: scale(2);
+    margin-left: 10px;
 }

@@ -8,11 +8,11 @@ class CreateRecept extends Component {
         products: this.props.products,
         addedReceptName: "",
         expanded: false,
-        breakfast: false,
-        lunch: false,
-        diner: false,
-        tea: false,
-        supper: false,
+        breakfast: true,
+        lunch: true,
+        diner: true,
+        tea: true,
+        supper: true,
         addedProducts: [],
         newProduct: { name: "", measure: "", kcal: "", number: "" },
         addedProductIndex: -1,
@@ -136,6 +136,7 @@ class CreateRecept extends Component {
                 'Content-Type': 'application/json',
             }
         }).then(this.props.upgradeRecepts)
+            .then(this.props.handleHideRightSite)
         this.setState({
             addedReceptName: "",
             expanded: false,
@@ -206,46 +207,60 @@ class CreateRecept extends Component {
         this.state.addedProducts.forEach(product => kcal += product.kcal * product.number)
         return (
             <div className="createReceptForm">
-                <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
-                <div className="multiselect">
-                    <div className="selectBox" onClick={this.handleShowCheckboxes}>
-                        <select>
-                            <option>Wybierz typ dania</option>
-                        </select>
-                        <div className="overSelect"></div>
+
+                <div className="createReceptFormName">
+                    <p className="steps">1. Nazwij przepis oraz opcjonalnie wybierz jego typ</p>
+                    <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
+                    <div className="multiselect">
+                        <div className="selectBox" onClick={this.handleShowCheckboxes}>
+                            <select>
+                                <option>Wybierz typ dania</option>
+                            </select>
+                            <div className="overSelect"></div>
+                        </div>
+                        {!this.state.expanded ? null : <div className="checkboxes">
+                            <label htmlFor="breakfast">
+                                <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
+                            <label htmlFor="lunch">
+                                <input onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Drugie śniadanie</label>
+                            <label htmlFor="diner">
+                                <input onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Obiad</label>
+                            <label htmlFor="tea">
+                                <input onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Podwieczorek</label>
+                            <label htmlFor="supper">
+                                <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
+                        </div>}
                     </div>
-                    {!this.state.expanded ? null : <div className="checkboxes">
-                        <label htmlFor="breakfast">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
-                        <label htmlFor="lunch">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Drugie śniadanie</label>
-                        <label htmlFor="diner">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Obiad</label>
-                        <label htmlFor="tea">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Podwieczorek</label>
-                        <label htmlFor="supper">
-                            <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
-                    </div>}
                 </div>
-                <div>
-                    <h2>Składniki: </h2>
-                    <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
-                        <li className="addProductsItem" key={index}>
-                            <h3 className="addProductsItemName" id={index}>{product.name.toUpperCase()}</h3>
-                            <h3 className="addProductsItemNumber" id={index}>{product.number} {product.measure}</h3>
-                            <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
-                        </li>))}
-                    </ul>
+
+                <div className="createReceptFormProdukts">
+                    <div>
+                        <p className="steps">2. Wyszukaj i dodaj potrzebne składniki</p>
+                        <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
+                            <li className="addProductsItem" key={index}>
+                                <p className="addProductsItemName" id={index}>{product.name.toUpperCase()}</p>
+                                <p className="addProductsItemNumber" id={index}>{product.number} {product.measure}</p>
+                                <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
+                            </li>))}
+                        </ul>
+                        <p className="addProductsItemKcal">Kcal: {Math.round(Math.round(kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                    </div>
+
+                    <input className="addProductsItemName" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
+                    <input className="addProductsItemNumber" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} /><p className="addProductsItemMeasurer">{this.state.newProduct.measure}</p>
+
+                    <div className="addProductsItemArea">
+                        {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
+                    </div>
+                    <button className="createReceptButtons" onClick={this.handleAddProduct}>dodaj produkt</button>
                 </div>
-                <input className="addProductsItemName" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
-                {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
-                <input className="addProductsItemNumber" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} /><p>{this.state.newProduct.measure}</p>
-                <button className="createReceptButtons" onClick={this.handleAddProduct}>dodaj produkt</button>
 
-                <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
-                <p>kcal: {Math.round(Math.round(kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                <div className="createReceptFormRecept">
+                    <p className="steps">3. Podaj sposób przygotowania nowego przepisu</p>
+                    <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
+                </div>
 
-                <button className="createReceptButtons" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
+                <button className="createReceptFormButton" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
         )
     }

@@ -60,19 +60,17 @@ class ShopingList extends Component {
 
     render() {
         return (
-            <div>
-                <h2 className="selectedComponentName">Lista zakupów</h2>
-                <div>
-                    <h2>{this.props.item === "nie dodano danych" ? <h2>Wyszukaj odpowiednią receptę lub jadłospis i następnie wygeneruj listę zakupów aby wyświetlić</h2> : this.props.item.name}</h2>
-                    {this.state.shopingList === [] ? null : <ul className="shopingList">
-                        {this.state.shopingList.map(component => (
-                            <li key={component.key}>
-                                <p>{component.name} {component.number} {component.measure}</p>
-                                <input type="checkbox" onChange={() => this.handleChecked(component.key)} checked={component.checked}></input>
-                            </li>
-                        ))}
-                    </ul>}
-                </div>
+            <div className="shopingListFile">
+                {this.props.item === "nie dodano danych" ? <h2>Wyszukaj odpowiednią receptę lub jadłospis i następnie wygeneruj listę zakupów aby wyświetlić</h2> : <h2 className="shopingListName">{this.props.item.name}</h2>}
+                {this.state.shopingList === [] ? null : <ul className="shopingList">
+                    {this.state.shopingList.map(component => (
+                        <li className="shopingListItemItem" key={component.key}>
+                            <p className="shopingListItemName">{component.name}</p>
+                            <p className="shopingListItemNumber">{component.number} {component.measure}</p>
+                            <input className="shopingListItemCheckbox" type="checkbox" onChange={() => this.handleChecked(component.key)} checked={component.checked}></input>
+                        </li>
+                    ))}
+                </ul>}
             </div>
         )
     }

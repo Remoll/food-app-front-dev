@@ -2,18 +2,165 @@
     margin: 0;
     padding: 0
 }
+
+.createMenuFile{
+    height: 100%;
+    width: 100%;
+}
+
+.createMenuFile div{
+    width: 100%;
+}
+
+.generatedMenu{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.createMenuConfirmButton{
+    background-color: #D1B764;
+    border: 1px solid #333; 
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    padding: 25px 5px 25px 5px;
+    height: 68px;
+    line-height: 100%;
+    width: 80%;
+    text-align: center;
+}
+
+.createMenuName{
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+
+.createMenuDays{
+    height: 100%;
+    overflow: scroll;
+}
+
+.createMenuDays .createMenuDay{
+    padding: 20px 10px;
+    border-bottom: 1px solid #000;
+}
+
+.createMenuDays .createMenuDay:last-child{
+    border-bottom: none;
+    margin-bottom: 200px;
+}
+
+
+.createMenuDays .createMenuDay ul{
+    display: block;
+    height: 100%;
+    list-style: none;
+}
+
+.createMenuDays .createMenuDay ul li{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px dotted #000
+}
+
+.createMenuDays .createMenuDay ul li .createMenuMealTypesName{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.createMenuDays .createMenuDay ul li .createMenuMealName{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.createMenuDays .createMenuDay ul li:last-child{
+    border-bottom: none;
+}
+
+.createMenuDays .createMenuDay ul li .createMenuDayButtonsSection{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px
+}
+
+.createMenuDays .createMenuDay ul li .createMenuDayButtonsSection button{
+    flex-basis: 45%;
+    background-color: #D1B764;
+    padding: 5px 5px;
+    border: 1px solid #333; 
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    text-decoration: none;
+    font-size: 12px;
+}
+
 .changeReceptOnNewMenu{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
     background-color: #fff;
-    border: 2px solid #000
+    border: 2px solid #000;
+    animation-name: grow;
+    animation-duration: .2s;
   }
 
+.showReceptInMenuList{
+    animation-name: grow;
+    animation-duration: .2s;
+}
+
+  @keyframes grow {
+    0%   {transform: scale(0)}
+    100% {transform: scale(1)}
+  }
+
+.createMenuFile div p{
+    font-weight: bold;
+}
+
+.menuGener{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
 .menuGener label{
-    display: block;
-    text-align: left
+    padding-bottom: 10px;
+    width: 30%;
+}
+
+.menuGener label input{
+    width: 100%;
+    font-size: 16px;
+}
+
+.menuGener label:first-child{
+    padding-top: 10px;
+    width: 60%;
+    margin: 0 20%;
+}
+ 
+.menuGener button{
+    width: 60%;
+    margin: 0 20%;
+    background-color: #D1B764;
+  border: 1px solid #333; 
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 5px 2px 5px 2px;
 }
 
 .ListOfChangeReceptInNewMenu{

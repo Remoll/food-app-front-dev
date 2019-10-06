@@ -70,20 +70,20 @@ class App extends Component {
     return (
       <Router>
         <div className="allSite">
-          <div className="alwaysShow">
-            <h1 className="appTitle">FOOD<FaAppleAlt />app</h1>
-            <nav className="mainMenu">
-              <NavLink to="/recepts" className='element'><FaDrumstickBite className="menuIcon" />Przepisy<div></div></NavLink>
-              <NavLink to="/menu" className='element'><FaReceipt className="menuIcon" />Jadłospisy<div></div></NavLink>
-              <NavLink to="/shopinglist" className='element'><FaShoppingCart className="menuIcon" />Lista zakupów<div></div></NavLink>
-            </nav>
-          </div>
+
+          <h1 className="appTitle">FOOD<FaAppleAlt />app</h1>
+          <nav className="mainMenu">
+            <NavLink to="/recepts" className='element'><FaDrumstickBite className="menuIcon" />Przepisy</NavLink>
+            <NavLink to="/menu" className='element'><FaReceipt className="menuIcon" />Jadłospisy</NavLink>
+            <NavLink to="/shopinglist" className='element'><FaShoppingCart className="menuIcon" />Zakupy</NavLink>
+          </nav>
+
           <div className="selectedOption">
             <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
             <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
             <Route path="/shopinglist" render={(props) => <ShopingList {...props} upgradeMenus={this.upgradeMenus.bind(this)} item={this.state.shopingListActiveItem} />} />
           </div>
-          <div className="rightBorder"></div>
+
         </div>
       </Router >
     )
