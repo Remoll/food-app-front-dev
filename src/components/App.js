@@ -1,3 +1,5 @@
+// Nowa funkcjonalność: Wpisujesz jakie masz rzeczy w lodówce i program szuka jaką receptę możesz wykonać
+
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { FaAppleAlt, FaDrumstickBite, FaReceipt, FaShoppingCart, } from "react-icons/fa";

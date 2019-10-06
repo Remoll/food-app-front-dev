@@ -12,11 +12,24 @@
     width: 100%;
 }
 
+.createMenuFile div.hide{
+    animation-name: hide;
+    animation-duration: .2s;
+    transform: translateY(-100%);
+    overflow: hidden;
+    height: 0;
+}
+
+@keyframes hide {
+0%   {transform: translateY(0); height: 25%;}
+100% {transform: translateY(-100%); height: 0;}
+}
+
 .generatedMenu{
     height: 100%;
     width: 100%;
     position: relative;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
 }
 
 .createMenuConfirmButton{
@@ -27,7 +40,7 @@
     text-decoration: none;
     font-size: 16px;
     letter-spacing: 1px;
-    margin: 0 auto;
+    margin: 25px auto 0;
     padding: 25px 5px 25px 5px;
     height: 68px;
     line-height: 100%;
@@ -110,7 +123,71 @@
     border: 2px solid #000;
     animation-name: grow;
     animation-duration: .2s;
+    z-index: 1;
+    padding: 0 10px;
+    overflow: hidden
   }
+
+  .changeReceptOnNewMenu>button{
+    color: #D1B764;
+    border: none; 
+    background-color: white;
+    font-size: 50px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+
+  .changeReceptOnNewMenu>p{
+      padding: 15px 0;
+      font-size: 15px;
+    }
+  
+  .changeReceptOnNewMenu>p>span{
+      font-size: 18px;
+    }
+
+    .changeReceptOnNewMenu>input{
+        padding: 2px;
+        font-size: 18px;
+        margin-bottom: 25px
+      }
+
+    .ListOfChangeReceptInNewMenu{
+        height: 100%;
+    }
+
+ .ListOfChangeReceptInNewMenu>ul{
+    overflow: scroll;
+    height: 100%;
+    padding-bottom: 200px;
+ }
+
+    .ListOfChangeReceptInNewMenu>ul>li{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0 5px 0;
+        border-bottom: 1px dotted #000;
+    }
+
+    .ListOfChangeReceptInNewMenu>ul>li>p{
+        font-size: 20px;
+        width: 90%;
+        margin-bottom: 10px;;
+    }
+
+    .ListOfChangeReceptInNewMenu>ul>li>button{
+        width: 30%;
+        background-color: #D1B764;
+        padding: 5px 5px;
+        border: 1px solid #333; 
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+        text-decoration: none;
+        font-size: 12px;
+        margin: 0 10px;
+    }
 
 .showReceptInMenuList{
     animation-name: grow;
@@ -120,6 +197,70 @@
   @keyframes grow {
     0%   {transform: scale(0)}
     100% {transform: scale(1)}
+  }
+
+  .showReceptInMenuList{
+    background-color: #fff;
+    position: fixed;
+    height: calc(100vh - 133px);
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin: 62px 0 71px 0;
+    overflow: scroll;
+}
+
+.showReceptInMenuList{
+    padding: 0 10px
+}
+
+.showReceptInMenuList>h1{
+    margin: 10px auto 20px;
+    text-align: center;
+}
+
+.showReceptInMenuList>div.first{
+    text-align: left;
+    padding: 20px 0 40px;
+}
+
+.showReceptInMenuList>div.first>h2{
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.first>ul>li{
+    font-size: 16px;
+    padding-bottom: 10px;
+    text-align: left;
+    border-bottom: 1px dotted #000
+}
+
+.showReceptInMenuList>div.first:nth-child(1){
+    padding-top: 30px
+}
+
+.showReceptInMenuList>div.second{
+    padding-bottom: 150px;
+    text-align: left;
+}
+
+.showReceptInMenuList>div.second h2{
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.second p{
+    font-weight: normal;
+}
+
+  .showReceptInMenuList>button{
+    color: #D1B764;
+    border: none; 
+    background-color: white;
+    font-size: 50px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
   }
 
 .createMenuFile div p{
@@ -161,9 +302,4 @@
   font-size: 16px;
   letter-spacing: 1px;
   padding: 5px 2px 5px 2px;
-}
-
-.ListOfChangeReceptInNewMenu{
-    overflow: scroll;
-    height: 400px;
 }

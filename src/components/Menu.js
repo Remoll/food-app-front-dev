@@ -85,8 +85,16 @@ class Menu extends Component {
                         <button className="hideReceptInMenuListButton" onClick={this.handleExitRecept}><FaArrowAltCircleLeft /></button>
                         <h1 className="receptNameInMenuFile">{this.state.showReceptName}</h1>
                         <h2 className="receptKcalInMenuFile">Kcal: {Math.round(Math.round(this.state.showReceptKcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h2>
-                        <div className="receptComponentsInMenuFile"><h2>Składniki:</h2><ul>{<ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component => <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}</ul>}</ul></div>
-                        <div className="receptReceptInMenuFile"><h2>Przepis:</h2><p>{this.state.showReceptRecepts}</p></div>
+                        <div className="receptComponentsInMenuFile">
+                            <h2>Składniki:</h2>
+                            <ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component =>
+                                <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}
+                            </ul>
+                        </div>
+                        <div className="receptReceptInMenuFile">
+                            <h2>Przepis:</h2>
+                            <p>{this.state.showReceptRecepts}</p>
+                        </div>
                     </div> : null}
 
             </div>
