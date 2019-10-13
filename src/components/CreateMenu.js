@@ -194,12 +194,14 @@ class CreateMenu extends Component {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(this.props.upgradeMenus);
+        }).then(this.props.upgradeMenus)
+            .then(this.props.handleHideRightSite);
         this.setState({
             newMenu: "",
             name: "",
             days: "",
             kcal: "",
+            hideMenuGener: ""
         })
     }
 
