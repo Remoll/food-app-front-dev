@@ -75,15 +75,15 @@ class App extends Component {
 
           <h1 className="appTitle">FOOD<FaAppleAlt />app</h1>
           <nav className="mainMenu">
-            <NavLink to="/recepts" className='element'><FaDrumstickBite className="menuIcon" />Przepisy</NavLink>
-            <NavLink to="/menu" className='element'><FaReceipt className="menuIcon" />Jadłospisy</NavLink>
-            <NavLink to="/shopinglist" className='element'><FaShoppingCart className="menuIcon" />Zakupy</NavLink>
+            <NavLink to="/food-app-front-dev/recepts" className='element'><FaDrumstickBite className="menuIcon" />Przepisy</NavLink>
+            <NavLink to="/food-app-front-dev/menu" className='element'><FaReceipt className="menuIcon" />Jadłospisy</NavLink>
+            <NavLink to="/food-app-front-dev/shopinglist" className='element'><FaShoppingCart className="menuIcon" />Zakupy</NavLink>
           </nav>
 
           <div className="selectedOption">
-            <Route path="/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
-            <Route path="/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
-            <Route path="/shopinglist" render={(props) => <ShopingList {...props} upgradeMenus={this.upgradeMenus.bind(this)} item={this.state.shopingListActiveItem} />} />
+            <Route path="/food-app-front-dev/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
+            <Route path="/food-app-front-dev/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
+            <Route path="/food-app-front-dev/shopinglist" render={(props) => <ShopingList {...props} upgradeMenus={this.upgradeMenus.bind(this)} item={this.state.shopingListActiveItem} />} />
           </div>
 
         </div>
