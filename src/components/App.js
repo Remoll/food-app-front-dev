@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
 
-    fetch(`https://git.heroku.com/foodapppp.git/getfoods`, {
+    fetch(`https://foodapppp.herokuapp.com/getfoods`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -26,7 +26,7 @@ class App extends Component {
         products: data
       }));
 
-    fetch(`https://git.heroku.com/foodapppp.git/getrecepts`, {
+    fetch(`https://foodapppp.herokuapp.com/getrecepts`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -34,7 +34,7 @@ class App extends Component {
         recepts: data
       }));
 
-    fetch(`https://git.heroku.com/foodapppp.git/getmenu`, {
+    fetch(`https://foodapppp.herokuapp.com/getmenu`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -44,7 +44,7 @@ class App extends Component {
   };
 
   upgradeRecepts() {
-    fetch(`https://git.heroku.com/foodapppp.git/getrecepts`, {
+    fetch(`https://foodapppp.herokuapp.com/getrecepts`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -54,7 +54,7 @@ class App extends Component {
   }
 
   upgradeMenus() {
-    fetch(`https://git.heroku.com/foodapppp.git/getmenu`, {
+    fetch(`https://foodapppp.herokuapp.com/getmenu`, {
       method: 'GET',
     })
       .then(res => res.json())
