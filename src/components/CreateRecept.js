@@ -129,7 +129,7 @@ class CreateRecept extends Component {
             type: `${this.state.breakfast ? "breakfast " : ""}${this.state.lunch ? "lunch " : ""}${this.state.diner ? "diner " : ""}${this.state.tea ? "tea " : ""}${this.state.supper ? "supper" : ""}`,
             recept: this.state.addedRecept,
         }
-        fetch('http://localhost:5000/addrecept', {
+        fetch('https://foodapppp.herokuapp.com/addrecept', {
             method: 'POST',
             body: JSON.stringify(addedRecept),
             headers: {
