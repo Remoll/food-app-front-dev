@@ -57,7 +57,7 @@ class Menus extends Component {
                             <li className="receptListItem" key={menu.id}>
                                 <p className="receptListItemName">{menu.name}, dni: {menu.days.length}</p>
                                 <div className="listButtonSection">
-                                    <Link to="/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(menu)} >Stwórz listę zakupów</Link>
+                                    <Link to="/food-app-front-dev/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(menu)} >Stwórz listę zakupów</Link>
                                     <button className="receptListItemButton" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button>
                                 </div>
                             </li>))}

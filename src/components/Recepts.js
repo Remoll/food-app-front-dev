@@ -73,7 +73,7 @@ class Recepts extends Component {
                             <li className="receptListItem" key={recept.id}>
                                 <p className="receptListItemName">{recept.name} kcal: {Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
                                 <div className="listButtonSection">
-                                    <Link to="/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(recept)} >Stwórz listę zakupów</Link>
+                                    <Link to="/food-app-front-dev/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(recept)} >Stwórz listę zakupów</Link>
                                     <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button>
                                 </div>
                             </li>))}

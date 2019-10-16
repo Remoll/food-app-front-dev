@@ -23,19 +23,19 @@ class ShopingList extends Component {
 
                 this.props.item.days.map(day =>
                     day.breakfast.components.map(component =>
-                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number += component.number))
+                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number = Number(shopingList[shopingList.findIndex(item => item.name === component.name)].number) + Number(component.number)))
                 this.props.item.days.map(day =>
                     day.lunch.components.map(component =>
-                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number += component.number))
+                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number = Number(shopingList[shopingList.findIndex(item => item.name === component.name)].number) + Number(component.number)))
                 this.props.item.days.map(day =>
                     day.diner.components.map(component =>
-                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number += component.number))
+                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number = Number(shopingList[shopingList.findIndex(item => item.name === component.name)].number) + Number(component.number)))
                 this.props.item.days.map(day =>
                     day.tea.components.map(component =>
-                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number += component.number))
+                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number = Number(shopingList[shopingList.findIndex(item => item.name === component.name)].number) + Number(component.number)))
                 this.props.item.days.map(day =>
                     day.supper.components.map(component =>
-                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number += component.number))
+                        (shopingList.filter(item => item.name === component.name)).length === 0 ? shopingList.push(component) : shopingList[shopingList.findIndex(item => item.name === component.name)].number = Number(shopingList[shopingList.findIndex(item => item.name === component.name)].number) + Number(component.number)))
 
                 shopingList.forEach((element, index) => {
                     element.checked = false;
