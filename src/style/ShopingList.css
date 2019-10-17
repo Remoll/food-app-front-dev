@@ -11,7 +11,6 @@
 
 .shopingListName{
     padding: 20px 10px;
-    font-size: 32pxs;
 }
 
 .shopingList{
@@ -34,7 +33,7 @@
 }
 
 .shopingListItemItem{
-    padding: 0 20px 20px;
+    padding: 10px 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -58,4 +57,20 @@
 .shopingListItemCheckbox{
     transform: scale(2);
     margin-left: 10px;
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+    
+    .shopingListName{
+        font-size: 32px;
+    }
+    
+    .shopingListItemItem{
+        padding: 20px 150px;
+    }
+    
+    .shopingListItemCheckbox{
+        transform: scale(3);
+        margin-left: 30px;
+    }
 }

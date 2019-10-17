@@ -128,6 +128,53 @@
     font-size: 12px;
 }
 
+@media (min-width: 768px) and (orientation: portrait) {
+    
+    .searchReceptSection{
+        font-size: 30px;
+        padding-left: 100px;
+    }
+
+    .searchReceptSection form{
+        margin: 10px 0;
+    }
+    
+    .searchReceptSection form label{
+        padding-right: 40px;
+    }
+    
+    .searchRecept{
+        width: 300px;
+        font-size: 30px;
+    }
+
+    .setMealType{
+        width: 150px;
+        font-size: 30px;
+    }
+
+    .receptListItemName{
+        font-size: 25px;
+        padding-bottom: 30px;
+    }
+
+    .createReceptButton{
+        font-size: 70px;
+        bottom: 10px;
+        right: 40px;
+    }
+
+    .listButtonSection{
+        justify-content: center;
+    }
+
+    .receptListItemButton{
+        flex-basis: 25%;
+        padding: 10px 10px; 
+        font-size: 16px;
+        margin: 0 10px;
+    }
+}
 
 .rightSide{
     width: 100vw;

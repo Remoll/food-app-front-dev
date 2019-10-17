@@ -67,3 +67,43 @@
    top: 0;
    left: 0;
  }
+
+ @media (min-width: 768px) and (orientation: portrait) {
+  
+  .appTitle{
+    font-size: 50px;
+  }
+
+  .mainMenu{
+    font-size: 30px;
+   }
+
+   .element{
+    padding: 10px 0;
+    color: #bbb;
+    display: flex;
+    flex-basis:33%;
+    flex-direction: column;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Loved by the King', cursive;
+    font-size: 30px;
+  }
+
+  .menuIcon{
+    text-align: center;
+    font-size: 50px;
+    margin: 0 auto;
+  }
+
+   .selectedOption{
+    text-align: center;
+    width: 200vw;
+    height: 100vh;
+    padding: 130px 0;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+ }

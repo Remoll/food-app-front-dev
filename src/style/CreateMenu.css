@@ -42,7 +42,6 @@
     letter-spacing: 1px;
     margin: 25px auto 0;
     padding: 25px 5px 25px 5px;
-    height: 68px;
     line-height: 100%;
     width: 80%;
     text-align: center;
@@ -116,15 +115,12 @@
 .changeReceptOnNewMenu{
     position: absolute;
     top: 0;
-    right: 0;
     height: 100%;
-    width: 50%;
+    width: 100vw;
     background-color: #fff;
-    border: 2px solid #000;
     animation-name: grow;
     animation-duration: .2s;
     z-index: 1;
-    padding: 0 10px;
     overflow: hidden
   }
 
@@ -189,12 +185,7 @@
         margin: 0 10px;
     }
 
-.showReceptInMenuList{
-    animation-name: grow;
-    animation-duration: .2s;
-}
-
-  @keyframes grow {
+ @keyframes grow {
     0%   {transform: scale(0)}
     100% {transform: scale(1)}
   }
@@ -209,10 +200,9 @@
     z-index: 1;
     margin: 62px 0 71px 0;
     overflow: scroll;
-}
-
-.showReceptInMenuList{
-    padding: 0 10px
+    padding: 0 10px;
+    animation-name: grow;
+    animation-duration: .2s;
 }
 
 .showReceptInMenuList>h1{
@@ -220,36 +210,40 @@
     text-align: center;
 }
 
-.showReceptInMenuList>div.first{
+.showReceptInMenuList>div.receptComponentsInMenuFile{
     text-align: left;
     padding: 20px 0 40px;
 }
 
-.showReceptInMenuList>div.first>h2{
+.showReceptInMenuList>div.receptComponentsInMenuFile>h2{
     padding-bottom: 20px;
 }
 
-.showReceptInMenuList>div.first>ul>li{
+.showReceptInMenuList>div.receptComponentsInMenuFile>ul{
+    list-style: none;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile>ul>li{
     font-size: 16px;
     padding-bottom: 10px;
     text-align: left;
     border-bottom: 1px dotted #000
 }
 
-.showReceptInMenuList>div.first:nth-child(1){
+.showReceptInMenuList>div.receptComponentsInMenuFile:nth-child(1){
     padding-top: 30px
 }
 
-.showReceptInMenuList>div.second{
+.showReceptInMenuList>div.receptReceptInMenuFile{
     padding-bottom: 150px;
     text-align: left;
 }
 
-.showReceptInMenuList>div.second h2{
+.showReceptInMenuList>div.receptReceptInMenuFile h2{
     padding-bottom: 20px;
 }
 
-.showReceptInMenuList>div.second p{
+.showReceptInMenuList>div.receptReceptInMenuFile p{
     font-weight: normal;
 }
 
@@ -302,4 +296,144 @@
   font-size: 16px;
   letter-spacing: 1px;
   padding: 5px 2px 5px 2px;
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+
+    .createMenuFile{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .createMenuFile p{
+        font-size: 30px;
+        padding: 20px 0;
+    }
+
+    .createMenuFile .menuGener label input{
+        font-size: 25px;
+        padding: 3px;
+    }
+
+    .createMenuFile .menuGener button{
+        font-size: 25px;
+        padding: 10px 2px;
+    }
+
+    .createMenuConfirmButton{
+        font-size: 22px;
+    }
+    
+    .generatedMenu>h2{
+        font-size: 36px;
+        padding-bottom: 20px;
+    }
+
+    .createMenuDay>h3{
+        font-size: 36px;
+    }
+
+    .createMenuDays .createMenuDay ul li .createMenuDayButtonsSection{
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .createMenuDays .createMenuDay ul li .createMenuDayButtonsSection button{
+        flex-basis: 30%;
+        padding: 10px 10px;
+        margin: 0 10px;
+        font-size: 20px;
+    }
+
+    .generatedMenu .changeReceptOnNewMenu{
+        left: calc(-20%);
+        width: 110vw;
+    }
+    
+      .changeReceptOnNewMenu>button{
+        font-size: 70px;
+        right: 90px;
+      }
+    
+      .changeReceptOnNewMenu>p{
+          font-size: 22px;
+        }
+      
+      .changeReceptOnNewMenu>p>span{
+          font-size: 36px;
+        }
+    
+        .changeReceptOnNewMenu>input{
+            font-size: 30px;
+          }
+    
+     .ListOfChangeReceptInNewMenu>ul{
+        padding-bottom: 300px;
+     }
+    
+        .ListOfChangeReceptInNewMenu>ul>li{
+            padding-bottom: 20px;
+        }
+    
+        .ListOfChangeReceptInNewMenu>ul>li>p{
+            font-size: 30px;
+        }
+    
+        .ListOfChangeReceptInNewMenu>ul>li>button{
+            width: 20%;
+            background-color: #D1B764;
+            padding: 10px 5px;
+            border: 1px solid #333; 
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 20px;
+        }
+.showReceptInMenuList{
+    height: calc(100vh - 241px);
+    padding: 0 100px;
+    margin: 119px 0 122px 0;
+}
+
+.showReceptInMenuList>h1{
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile>h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile>ul>li{
+    font-size: 20px;
+    padding: 20px 0;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile:nth-child(1){
+    padding-top: 30px
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile{
+    padding-bottom: 150px;
+    text-align: left;
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile p{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+  .showReceptInMenuList>button{
+        font-size: 70px;
+        bottom: 10px;
+        right: 40px;
+  }
 }

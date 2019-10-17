@@ -49,7 +49,6 @@
   letter-spacing: 1px;
   margin: 0 auto 100px;
   padding: 25px 5px 25px 5px;
-  height: 68px;
   line-height: 100%;
   width: 80%;
   text-align: center;
@@ -142,7 +141,9 @@
 
 .addProductsItemKcal{
   text-align: left;
-  margin: 0 0 20px 20px;
+  padding-top: 5px;
+  margin: 0 50px 20px 20px;
+  border-top: 1px dotted #000;
 }
 
 .addReceptTextField{
@@ -177,5 +178,92 @@
 @media (max-width: 321px) and (orientation: portrait) {
   .createReceptFormName{
     height: 140px;
+  }
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+
+  .createReceptForm{
+    width: 70%;
+    margin: 0 auto;  
+  }
+
+  .createReceptFormName{
+    height: 130px;
+    padding: 20px 0;
+  }
+  
+  .createReceptFormProdukts{
+    padding: 20px 0;
+  }
+  
+  .createReceptFormRecept{
+    padding: 10px 0;
+  }
+  
+  .createReceptFormButton{
+    font-size: 20px;
+    width: 70%;
+  }
+  
+  .steps{
+   font-size: 20px;
+  
+  }
+  
+  .createReceptName{
+    font-size: 20px;
+    width: 300px;
+  }
+  
+  .multiselect {
+    width: 300px;
+  }
+  
+  .checkboxes {
+    font-size: 20px;
+  }
+  
+  .checkboxes label input{
+    transform: scale(2);
+    margin: 3px 10px;
+  }
+
+  .addProductsItem p{
+    font-size: 20px;
+  }
+
+  .createReceptButtons{
+    padding: 7px 7px;
+    height: 32px;
+    font-size: 16px; 
+  }
+  
+  .addProductsItemName{
+    font-size: 20px;
+  }
+  
+  .addProductsItemNumber{
+    font-size: 20px;
+  }
+  
+  .addProductsItemKcal{
+    font-size: 20px;
+    margin: 10px 70px 40px 20px;
+  }
+  
+  .addReceptTextField{
+    font-size: 16px;
+    padding: 5px;
+    height: 200px;
+    width: 90%;
+  }
+
+  .addProductsAutocompleteList button:nth-child(odd){
+    font-size: 20px;
+   }
+  
+  .addProductsAutocompleteList button:nth-child(even){
+    font-size: 20px;
   }
 }

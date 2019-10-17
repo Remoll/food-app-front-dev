@@ -188,7 +188,7 @@ class CreateMenu extends Component {
     }
 
     handleConfirmMenu = () => {
-        fetch('https://foodapppp.herokuapp.com/addmenu', {
+        fetch('http://localhost:3000/addmenu', {
             method: 'POST',
             body: JSON.stringify(this.state.newMenu),
             headers: {
@@ -340,13 +340,13 @@ class CreateMenu extends Component {
                                     <button onClick={this.handleExitRecept}><FaTimesCircle /></button>
                                     <h1>{this.state.showReceptName}</h1>
                                     <h2 className="receptKcalInMenuFile">Kcal: {Math.round(Math.round(this.state.showReceptKcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h2>
-                                    <div className="first">
+                                    <div className="receptComponentsInMenuFile">
                                         <h2>Składniki:</h2>
                                         <ul>{this.state.showReceptComponents.map(component =>
                                             <li key={component.name}>{component.name} x{component.number} {component.measure}</li>)}
                                         </ul>
                                     </div>
-                                    <div className="second">
+                                    <div className="receptReceptInMenuFile">
                                         <h2>Przepis:</h2>
                                         <p>{this.state.showReceptRecepts}</p>
                                     </div>

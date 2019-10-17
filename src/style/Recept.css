@@ -26,6 +26,10 @@
     border-bottom: 1px dotted #000
 }
 
+.componentsInReceptFile>ul{
+    list-style: none;
+}
+
 .componentInReceptFile:nth-child(1){
     padding-top: 30px
 }
@@ -37,4 +41,41 @@
 
 .receptInReceptFile h2{
     padding-bottom: 20px;
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+  
+    .nameInReceptFile{
+        font-size: 40px;
+    }
+
+    .componentsInReceptFile{
+        padding: 20px 100px 40px;
+    }
+
+    .componentsInReceptFile>h2{
+        font-size: 30px;
+    }
+
+    .componentInReceptFile{
+        font-size: 20px;
+        padding: 20px 0 10px;
+    }
+    
+    .componentInReceptFile:nth-child(1){
+        padding-top: 40px
+    }
+    
+    .receptInReceptFile{
+        padding: 0 100px 150px 100px;
+        text-align: left;
+    }
+    
+    .receptInReceptFile h2{
+        padding-bottom: 20px;
+        font-size: 30px;
+    }
+    .receptInReceptFile p{
+        font-size: 20px;
+    }
 }
