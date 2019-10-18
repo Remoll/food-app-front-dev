@@ -1,5 +1,9 @@
 https://remoll.github.io/food-app-front-dev/
 
+My first major application. Frontend written in React.js, connects to the server written in Node.js and put on Herok. The server connects to the Mongobd database.
+
+The application streamlines the creation of tailored diets. It allows you to add / view recipes, generate menus with appropriate calories for a selected number of days, and create shopping lists based on them.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
