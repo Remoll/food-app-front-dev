@@ -87,7 +87,7 @@ class CreateMenu extends Component {
         }
         for (let i = 0; i < this.state.days; i++) { //dla każdego dnia filtruje przepisy które: a) są odpowiednim typem posiłku; b) mieszczącą się w przedziale kalorycznym; a następnie losuje jeden przepis z puli dla każdego dnia
 
-            const invalidMeal = { id: -1, name: "no such meal", kcal: 0, components: [{ name: "no components", number: -1, measure: "-" }], type: "breakfast lunch diner tea supper" }
+            const invalidMeal = { id: -1, name: "nie można dobrać posiłku do podanej kaloryczności", kcal: 0, components: [{ name: "no components", number: -1, measure: "-" }], type: "breakfast lunch diner tea supper" }
 
             const breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
             const lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > this.state.kcal * .1 && item.kcal < this.state.kcal * .2);
