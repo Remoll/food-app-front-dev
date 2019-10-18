@@ -181,7 +181,7 @@
   }
 }
 
-@media (min-width: 768px) and (orientation: portrait) {
+@media (min-width: 768px) {
 
   .createReceptForm{
     width: 70%;

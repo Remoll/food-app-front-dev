@@ -68,7 +68,7 @@
    left: 0;
  }
 
- @media (min-width: 768px) and (orientation: portrait) {
+ @media (min-width: 768px) {
   
   .appTitle{
     font-size: 50px;
@@ -106,4 +106,42 @@
     top: 0;
     left: 0;
   }
+ }
+
+
+ @media (min-width: 1024px) and (orientation: landscape) {
+
+  .allSite{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+  }
+  
+  .appTitle{
+    font-size: 36px;
+  }
+  
+  .mainMenu{
+    width: 100px;
+    height: 100vh;
+    padding-top: 90px;
+    flex-direction: column;
+  }
+  
+  .element{
+    padding: 10px 0;
+    font-size: 20px;
+    justify-content: center;
+  }
+  
+  .menuIcon{
+    font-size: 30px;
+  }
+
+  .selectedOption{
+    width: 100vw;
+    padding: 92px 0 0 100px;
+  }
+
  }

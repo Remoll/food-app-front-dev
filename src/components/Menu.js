@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../style/Menu.css';
-import { FaArrowAltCircleLeft } from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 
 class Menu extends Component {
     state = {
@@ -82,7 +82,7 @@ class Menu extends Component {
 
                 {this.state.showRecept ?
                     <div className="showReceptInMenuList">
-                        <button className="hideReceptInMenuListButton" onClick={this.handleExitRecept}><FaArrowAltCircleLeft /></button>
+                        <button className="hideReceptInMenuListButton" onClick={this.handleExitRecept}><FaTimesCircle /></button>
                         <h1 className="receptNameInMenuFile">{this.state.showReceptName}</h1>
                         <h2 className="receptKcalInMenuFile">Kcal: {Math.round(Math.round(this.state.showReceptKcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h2>
                         <div className="receptComponentsInMenuFile">

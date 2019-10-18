@@ -298,7 +298,7 @@
   padding: 5px 2px 5px 2px;
 }
 
-@media (min-width: 768px) and (orientation: portrait) {
+@media (min-width: 768px){
 
     .createMenuFile{
         width: 80%;
@@ -436,4 +436,135 @@
         bottom: 10px;
         right: 40px;
   }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+
+    .createMenuFile p{
+        font-size: 20px;
+    }
+    
+    .createMenuFile>h1{
+        font-size: 20px;
+    }
+
+    .createMenuFile .menuGener label input{
+        font-size: 16px;
+        padding: 1px;
+    }
+
+    .createMenuFile .menuGener button{
+        font-size: 16px;
+        padding: 10px 2px;
+    }
+
+    .createMenuConfirmButton{
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .generatedMenu>h2{
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .createMenuDay>h3{
+        font-size: 25px;
+    }
+
+    .createMenuDays .createMenuDay{
+        border-bottom: 2px solid #000;
+    }
+
+    .createMenuDays .createMenuDay ul li p{
+        font-size: 16px;
+        padding-bottom: 0;
+    }
+
+    .createMenuDays .createMenuDay ul li .createMenuDayButtonsSection button{
+        flex-basis: 20%;
+        padding: 5px 5px;
+        font-size: 16px;
+    }
+
+    .generatedMenu .changeReceptOnNewMenu{
+        left: 0;
+        width: 100%;
+    }
+    
+    .changeReceptOnNewMenu>button{
+        font-size: 70px;
+        right: 90px;
+    }
+    
+    .changeReceptOnNewMenu>p{
+        font-size: 22px;
+    }
+      
+    .changeReceptOnNewMenu>p>span{
+        font-size: 25px;
+    }
+    
+.changeReceptOnNewMenu>input{
+    font-size: 20px;
+}
+    
+.ListOfChangeReceptInNewMenu>ul>li>p{
+    font-size: 16px;
+}
+    
+.ListOfChangeReceptInNewMenu>ul>li>button{
+    width: 20%;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.showReceptInMenuList{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.showReceptInMenuList>h1{
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile>h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile>ul>li{
+    font-size: 20px;
+    padding: 20px 0;
+}
+
+.showReceptInMenuList>div.receptComponentsInMenuFile:nth-child(1){
+    padding-top: 30px
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile{
+    padding-bottom: 150px;
+    text-align: left;
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.showReceptInMenuList>div.receptReceptInMenuFile p{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.showReceptInMenuList>button{
+    font-size: 70px;
+    bottom: 10px;
+    right: 40px;
+}    
+
 }
