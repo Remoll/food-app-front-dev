@@ -188,7 +188,7 @@ class CreateMenu extends Component {
     }
 
     handleConfirmMenu = () => {
-        fetch('http://localhost:3000/addmenu', {
+        fetch('https://foodapppp.herokuapp.com/addmenu', {
             method: 'POST',
             body: JSON.stringify(this.state.newMenu),
             headers: {
