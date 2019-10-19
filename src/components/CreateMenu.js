@@ -288,7 +288,7 @@ class CreateMenu extends Component {
                             <div className="createMenuDays">
                                 {newMenu.days.map((day, index) => (
                                     <div className="createMenuDay">
-                                        <h3>Dzień {index + 1} kcal: {day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal}</h3>
+                                        <h3>Dzień {index + 1} kcal: {Math.round(Math.round((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal) * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h3>
                                         <ul>
                                             <li key={index + "1"}>
                                                 <p><span className="createMenuMealTypesName">Śniadanie</span> {day.breakfast.kcal} kcal</p>

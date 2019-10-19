@@ -140,11 +140,11 @@ class CreateRecept extends Component {
         this.setState({
             addedReceptName: "",
             expanded: false,
-            breakfast: false,
-            lunch: false,
-            diner: false,
-            tea: false,
-            supper: false,
+            breakfast: true,
+            lunch: true,
+            diner: true,
+            tea: true,
+            supper: true,
             addedProducts: [],
             addedRecept: "",
             refreshReceptsBase: true
