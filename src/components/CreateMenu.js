@@ -89,26 +89,151 @@ class CreateMenu extends Component {
 
             const invalidMeal = { id: -1, name: "nie można dobrać posiłku do podanej kaloryczności", kcal: 0, components: [{ name: "no components", number: -1, measure: "-" }], type: "breakfast lunch diner tea supper" }
 
-            const breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
-            const lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > this.state.kcal * .1 && item.kcal < this.state.kcal * .2);
-            const diners = this.props.recepts.filter(item => item.type.includes("diner") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
-            const teas = this.props.recepts.filter(item => item.type.includes("tea") && item.kcal > this.state.kcal * .05 && item.kcal < this.state.kcal * .15);
-            const suppers = this.props.recepts.filter(item => item.type.includes("supper") && item.kcal > this.state.kcal * .15 && item.kcal < this.state.kcal * .25);
+            let breakfastCounter = 1
+            let lunchCounter = 1
+            let dinerCounter = 1
+            let teaCounter = 1
+            let supperCounter = 1
 
-            const breakfast = breakfasts.length === 0 ? invalidMeal : breakfasts[Math.floor(Math.random() * breakfasts.length)]//JAK SPRAWDZIĆ CZY WYSZUKAŁO PRZAWIDŁOWY PRZEPIS? jak length === 0 to nie wyszykało
-            const lunch = breakfasts.length === 0 ? invalidMeal : lunchs[Math.floor(Math.random() * lunchs.length)]
-            const diner = breakfasts.length === 0 ? invalidMeal : diners[Math.floor(Math.random() * diners.length)]
-            const tea = breakfasts.length === 0 ? invalidMeal : teas[Math.floor(Math.random() * teas.length)]
-            const supper = breakfasts.length === 0 ? invalidMeal : suppers[Math.floor(Math.random() * suppers.length)]
 
-            const kcal = (breakfast.kcal + lunch.kcal + diner.kcal + tea.kcal + supper.kcal);
+            let breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
+            let lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > this.state.kcal * .1 && item.kcal < this.state.kcal * .2);
+            let diners = this.props.recepts.filter(item => item.type.includes("diner") && item.kcal > this.state.kcal * .25 && item.kcal < this.state.kcal * .35);
+            let teas = this.props.recepts.filter(item => item.type.includes("tea") && item.kcal > this.state.kcal * .05 && item.kcal < this.state.kcal * .15);
+            let suppers = this.props.recepts.filter(item => item.type.includes("supper") && item.kcal > this.state.kcal * .15 && item.kcal < this.state.kcal * .25);
+
+            //sprawdza czy wyszukało przepisy do podanej kaloryczności, jeśli nie to szuka najpierw dla wyższej, późnmiej dla niższej, i następnie odpowiednio mnoży kalorie i ilości składników
+            if (breakfasts.length === 0) {
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal / 2
+                    breakfastCounter = breakfastCounter * 2
+                    breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > kcal * .25 && item.kcal < kcal * .35)
+                } while (breakfasts.length === 0 && breakfastCounter < 100)
+            }
+            if (breakfasts.length === 0) {
+                breakfastCounter = 1
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal * 2
+                    breakfastCounter = breakfastCounter / 2
+                    breakfasts = this.props.recepts.filter(item => item.type.includes("breakfast") && item.kcal > kcal * .25 && item.kcal < kcal * .35)
+                } while (breakfasts.length === 0 && breakfastCounter > 0.06)
+            }
+
+
+
+            if (lunchs.length === 0) {
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal / 2
+                    lunchCounter = lunchCounter * 2
+                    lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > kcal * .1 && item.kcal < kcal * .2)
+                } while (lunchs.length === 0 && lunchCounter < 100)
+            }
+
+            if (lunchs.length === 0) {
+                lunchCounter = 1
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal * 2
+                    lunchCounter = lunchCounter / 2
+                    lunchs = this.props.recepts.filter(item => item.type.includes("lunch") && item.kcal > kcal * .1 && item.kcal < kcal * .2)
+                } while (lunchs.length === 0 && lunchCounter > 0.06)
+            }
+
+
+
+            if (diners.length === 0) {
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal / 2
+                    dinerCounter = dinerCounter * 2
+                    diners = this.props.recepts.filter(item => item.type.includes("diner") && item.kcal > kcal * .25 && item.kcal < kcal * .35)
+                } while (diners.length === 0 && dinerCounter < 100)
+            }
+
+            if (diners.length === 0) {
+                dinerCounter = 1
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal * 2
+                    dinerCounter = dinerCounter / 2
+                    diners = this.props.recepts.filter(item => item.type.includes("diner") && item.kcal > kcal * .25 && item.kcal < kcal * .35)
+                } while (diners.length === 0 && dinerCounter > 0.06)
+            }
+
+
+
+            if (teas.length === 0) {
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal / 2
+                    teaCounter = teaCounter * 2
+                    teas = this.props.recepts.filter(item => item.type.includes("tea") && item.kcal > kcal * .05 && item.kcal < kcal * .15)
+                } while (teas.length === 0 && teaCounter < 100)
+            }
+
+            if (teas.length === 0) {
+                teaCounter = 1
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal * 2
+                    teaCounter = teaCounter / 2
+                    teas = this.props.recepts.filter(item => item.type.includes("tea") && item.kcal > kcal * .05 && item.kcal < kcal * .15)
+                } while (teas.length === 0 && teaCounter > 0.06)
+            }
+
+
+
+            if (suppers.length === 0) {
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal / 2
+                    supperCounter = supperCounter * 2
+                    suppers = this.props.recepts.filter(item => item.type.includes("supper") && item.kcal > kcal * .15 && item.kcal < kcal * .25)
+                } while (suppers.length === 0 && supperCounter < 100)
+            }
+
+            if (suppers.length === 0) {
+                supperCounter = 1
+                let kcal = this.state.kcal
+                do {
+                    kcal = kcal * 2
+                    supperCounter = supperCounter / 2
+                    suppers = this.props.recepts.filter(item => item.type.includes("supper") && item.kcal > kcal * .15 && item.kcal < kcal * .25)
+                } while (suppers.length === 0 && supperCounter > 0.06)
+            }
+
+            let breakfast = breakfasts.length === 0 ? invalidMeal : breakfasts[Math.floor(Math.random() * breakfasts.length)]//JAK SPRAWDZIĆ CZY WYSZUKAŁO PRZAWIDŁOWY PRZEPIS? jak length === 0 to nie wyszykało
+            const lunch = lunchs.length === 0 ? invalidMeal : lunchs[Math.floor(Math.random() * lunchs.length)]
+            const diner = diners.length === 0 ? invalidMeal : diners[Math.floor(Math.random() * diners.length)]
+            const tea = teas.length === 0 ? invalidMeal : teas[Math.floor(Math.random() * teas.length)]
+            const supper = suppers.length === 0 ? invalidMeal : suppers[Math.floor(Math.random() * suppers.length)]
+
+            breakfast.kcal *= breakfastCounter
+            breakfast.components.forEach(component => component.number *= breakfastCounter)
+
+            lunch.kcal *= lunchCounter
+            lunch.components.forEach(component => component.number *= lunchCounter)
+
+            diner.kcal *= dinerCounter
+            diner.components.forEach(component => component.number *= dinerCounter)
+
+            tea.kcal *= teaCounter
+            tea.components.forEach(component => component.number *= teaCounter)
+
+            supper.kcal *= supperCounter
+            supper.components.forEach(component => component.number *= supperCounter)
+
+            const dayKcal = (breakfast.kcal + lunch.kcal + diner.kcal + tea.kcal + supper.kcal);
             const day = {
                 breakfast,
                 lunch,
                 diner,
                 tea,
                 supper,
-                kcal
+                dayKcal
             };
             newMenu.days.push(day)
         }
