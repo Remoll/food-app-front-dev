@@ -45,7 +45,8 @@ class Recepts extends Component {
         })
     }
     render() {
-        const recepts = this.props.recepts.filter(recept => (recept.name.toLowerCase().includes(this.state.searchRecept.toLowerCase()) && recept.type.includes(this.state.mealTypeFilter)));
+        const recepts = this.props.recepts.filter(recept =>
+            (recept.name.toLowerCase().includes(this.state.searchRecept.toLowerCase()) && recept.type.includes(this.state.mealTypeFilter)));
         return (
             <div className={`receptsMenu ${this.state.showReceptChangeClass}`}>
 
@@ -71,7 +72,7 @@ class Recepts extends Component {
                     <ul className="receptList">
                         {recepts.map(recept => (
                             <li className="receptListItem" key={recept.id}>
-                                <p className="receptListItemName">{recept.name} kcal: {Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                                <p className="receptListItemName">{recept.name} kcal: {Math.floor(recept.kcal)}</p>
                                 <div className="listButtonSection">
                                     <Link to="/food-app-front-dev/shopinglist" className="receptListItemButton" onClick={() => this.props.setShopingListActiveItem(recept)} >Stwórz listę zakupów</Link>
                                     <button className="receptListItemButton" id={recept.id} onClick={this.handleShowRecept}>Pokaż</button>
@@ -81,7 +82,11 @@ class Recepts extends Component {
                 </div>
 
                 <div className="rightSide">
-                    {this.state.showRecept ? (this.state.activeRecept === -1 ? <CreateRecept upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} handleHideRightSite={this.handleHideRightSite.bind(this)} /> : <Recept recept={this.props.recepts[this.state.activeRecept]} />) : <h2>Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
+                    {this.state.showRecept ?
+                        (this.state.activeRecept === -1 ?
+                            <CreateRecept upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} handleHideRightSite={this.handleHideRightSite.bind(this)} />
+                            : <Recept recept={this.props.recepts[this.state.activeRecept]} />)
+                        : <h2>Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
                     <button className="createReceptButton" onClick={this.handleHideRightSite}><FaArrowAltCircleLeft /></button>
                 </div>
 

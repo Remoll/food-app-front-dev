@@ -313,7 +313,7 @@ class CreateMenu extends Component {
     }
 
     handleConfirmMenu = () => {
-        fetch('https://foodapppp.herokuapp.com/addmenu', {
+        fetch('http://localhost:3000/addmenu', {
             method: 'POST',
             body: JSON.stringify(this.state.newMenu),
             headers: {
@@ -399,7 +399,7 @@ class CreateMenu extends Component {
                                 <div className="ListOfChangeReceptInNewMenu">{
                                     <ul>{inputSearch.map((recept, index) =>
                                         <li key={index}>
-                                            <p>{recept.name} kcal: {Math.round(Math.round(recept.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                                            <p>{recept.name} kcal: {Math.floor(recept.kcal)}</p>
                                             <button onClick={this.handleEditMealConfirmButton} value={recept.name}>Wybierz</button>
                                             <button onClick={() => this.handleShowRecept(recept.name, recept.components, recept.recept, recept.kcal)}>Szczegóły</button>
                                         </li>)}
@@ -413,10 +413,10 @@ class CreateMenu extends Component {
                             <div className="createMenuDays">
                                 {newMenu.days.map((day, index) => (
                                     <div className="createMenuDay">
-                                        <h3>Dzień {index + 1} kcal: {Math.round(Math.round((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal) * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h3>
+                                        <h3>Dzień {index + 1} kcal: {Math.floor(day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal)}</h3>
                                         <ul>
                                             <li key={index + "1"}>
-                                                <p><span className="createMenuMealTypesName">Śniadanie</span> {Math.round(Math.round(day.breakfast.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} kcal</p>
+                                                <p><span className="createMenuMealTypesName">Śniadanie</span> {Math.floor(day.breakfast.kcal)} kcal</p>
                                                 <p className="createMenuMealName">{day.breakfast.name}</p>
                                                 <div className="createMenuDayButtonsSection">
                                                     <button onClick={() => this.handleEditMealShow(index, "breakfast")}>zamień</button>
@@ -424,7 +424,7 @@ class CreateMenu extends Component {
                                                 </div>
                                             </li>
                                             <li key={index + "2"}>
-                                                <p><span className="createMenuMealTypesName">Drugie śniadanie</span> {Math.round(Math.round(day.lunch.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} kcal</p>
+                                                <p><span className="createMenuMealTypesName">Drugie śniadanie</span> {Math.floor(day.lunch.kcal)} kcal</p>
                                                 <p className="createMenuMealName">{day.lunch.name}</p>
                                                 <div className="createMenuDayButtonsSection">
                                                     <button onClick={() => this.handleEditMealShow(index, "lunch")}>zamień</button>
@@ -432,7 +432,7 @@ class CreateMenu extends Component {
                                                 </div>
                                             </li>
                                             <li key={index + "3"}>
-                                                <p><span className="createMenuMealTypesName">Obiad</span> {Math.round(Math.round(day.diner.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} kcal</p>
+                                                <p><span className="createMenuMealTypesName">Obiad</span> {Math.floor(day.diner.kcal)} kcal</p>
                                                 <p className="createMenuMealName">{day.diner.name}</p>
                                                 <div className="createMenuDayButtonsSection">
                                                     <button onClick={() => this.handleEditMealShow(index, "diner")}>zamień</button>
@@ -440,7 +440,7 @@ class CreateMenu extends Component {
                                                 </div>
                                             </li>
                                             <li key={index + "4"}>
-                                                <p><span className="createMenuMealTypesName">Podwieczorek</span> {Math.round(Math.round(day.tea.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} kcal</p>
+                                                <p><span className="createMenuMealTypesName">Podwieczorek</span> {Math.floor(day.tea.kcal)} kcal</p>
                                                 <p className="createMenuMealName">{day.tea.name}</p>
                                                 <div className="createMenuDayButtonsSection">
                                                     <button onClick={() => this.handleEditMealShow(index, "tea")}>zamień</button>
@@ -448,7 +448,7 @@ class CreateMenu extends Component {
                                                 </div>
                                             </li>
                                             <li key={index + "5"}>
-                                                <p><span className="createMenuMealTypesName">Kolacja</span> {Math.round(Math.round(day.supper.kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)} kcal</p>
+                                                <p><span className="createMenuMealTypesName">Kolacja</span> {Math.floor(day.supper.kcal)} kcal</p>
                                                 <p className="createMenuMealName">{day.supper.name}</p>
                                                 <div className="createMenuDayButtonsSection">
                                                     <button onClick={() => this.handleEditMealShow(index, "supper")}>zamień</button>
@@ -464,7 +464,7 @@ class CreateMenu extends Component {
                                 <div className="showReceptInMenuList" >
                                     <button onClick={this.handleExitRecept}><FaTimesCircle /></button>
                                     <h1>{this.state.showReceptName}</h1>
-                                    <h2 className="receptKcalInMenuFile">Kcal: {Math.round(Math.round(this.state.showReceptKcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</h2>
+                                    <h2 className="receptKcalInMenuFile">Kcal: {Math.floor(this.state.showReceptKcal)}</h2>
                                     <div className="receptComponentsInMenuFile">
                                         <h2>Składniki:</h2>
                                         <ul>{this.state.showReceptComponents.map(component =>
