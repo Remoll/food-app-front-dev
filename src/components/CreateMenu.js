@@ -1,6 +1,6 @@
 /* eslint-disable no-loop-func */
 import React, { Component } from 'react';
-import '../style/CreateMenu.css';
+import '../style/CreateMenu.scss';
 import { FaTimesCircle } from 'react-icons/fa';
 
 class CreateMenu extends Component {

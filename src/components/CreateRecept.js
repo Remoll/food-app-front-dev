@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/CreateRecept.css'
+import '../style/CreateRecept.scss'
 
 class CreateRecept extends Component {
     state = {

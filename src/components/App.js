@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import { FaAppleAlt, FaDrumstickBite, FaReceipt, FaShoppingCart, } from "react-icons/fa";
-import '../style/App.css';
+import '../style/App.scss';
 import Recepts from './Recepts';
 import Menus from './Menus';
 import ShopingList from './ShopingList';
