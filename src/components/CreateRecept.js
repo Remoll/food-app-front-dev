@@ -206,19 +206,19 @@ class CreateRecept extends Component {
         let kcal = 0;
         this.state.addedProducts.forEach(product => kcal += product.kcal * product.number)
         return (
-            <div className="createReceptForm">
+            <div className="createReceptForm create-recipe">
 
-                <div className="createReceptFormName">
-                    <p className="steps">1. Nazwij przepis oraz opcjonalnie wybierz jego typ</p>
-                    <input className="createReceptName" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
-                    <div className="multiselect">
-                        <div className="selectBox" onClick={this.handleShowCheckboxes}>
+                <div className="createReceptFormName create-recipe__form-name">
+                    <p className="steps create-recipe__step">1. Nazwij przepis oraz opcjonalnie wybierz jego typ</p>
+                    <input className="createReceptName create-recipe__form-name-name" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
+                    <div className="multiselect create-recipe__form-name-multiselect">
+                        <div className="selectBox create-recipe__form-name-multiselect-select-box" onClick={this.handleShowCheckboxes}>
                             <select>
                                 <option>Wybierz typ dania</option>
                             </select>
-                            <div className="overSelect"></div>
+                            <div className="overSelect create-recipe__form-name-multiselect-select-box-over-select"></div>
                         </div>
-                        {!this.state.expanded ? null : <div className="checkboxes">
+                        {!this.state.expanded ? null : <div className="checkboxes create-recipe__form-name-multiselect-checkboxes">
                             <label htmlFor="breakfast">
                                 <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
                             <label htmlFor="lunch">
@@ -233,34 +233,35 @@ class CreateRecept extends Component {
                     </div>
                 </div>
 
-                <div className="createReceptFormProdukts">
+                <div className="createReceptFormProdukts create-recipe__form-products">
                     <div>
-                        <p className="steps">2. Wyszukaj i dodaj potrzebne składniki</p>
-                        <ul className="addProductsList">{this.state.addedProducts.map((product, index) => (
-                            <li className="addProductsItem" key={index}>
-                                <p className="addProductsItemName" id={index}>{product.name.toUpperCase()}</p>
-                                <p className="addProductsItemNumber" id={index}>{product.number} {product.measure}</p>
-                                <button className="createReceptButtons" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
+                        <p className="steps create-recipe__step">2. Wyszukaj i dodaj potrzebne składniki</p>
+                        <ul className="addProductsList create-recipe__form-products-list">{this.state.addedProducts.map((product, index) => (
+                            <li className="addProductsItem create-recipe__form-products-item" key={index}>
+                                <p className="addProductsItemName create-recipe__form-products-name" id={index}>{product.name.toUpperCase()}</p>
+                                <p className="addProductsItemNumber create-recipe__form-products-number" id={index}>{product.number} {product.measure}</p>
+                                <button className="createReceptButtons create-recipe__form-btn" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
                             </li>))}
                         </ul>
-                        <p className="addProductsItemKcal">Kcal: {Math.round(Math.round(kcal * Math.pow(10, 2 + 1)) / 10) / (Math.pow(10, 2 + 1) / 10)}</p>
+                        <p className="addProductsItemKcal create-recipe__form-products-kcal">Kcal: {Math.floor(kcal)}</p>
                     </div>
 
-                    <input className="addProductsItemName" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
-                    <input className="addProductsItemNumber" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} /><p className="addProductsItemMeasurer">{this.state.newProduct.measure}</p>
+                    <input className="addProductsItemName create-recipe__form-products-input-name" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
+                    <input className="addProductsItemNumber create-recipe__form-products-input-number" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} />
+                    <p className="addProductsItemMeasurer create-recipe__form-products-input-measure">{this.state.newProduct.measure}</p>
 
-                    <div className="addProductsItemArea">
-                        {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
+                    <div className="addProductsItemArea create-recipe__form-products-autocomplete-area">
+                        {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList create-recipe__form-products-autocomplete-area-list">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
                     </div>
-                    <button className="createReceptButtons" onClick={this.handleAddProduct}>dodaj produkt</button>
+                    <button className="createReceptButtons create-recipe__form-btn" onClick={this.handleAddProduct}>dodaj produkt</button>
                 </div>
 
-                <div className="createReceptFormRecept">
-                    <p className="steps">3. Podaj sposób przygotowania nowego przepisu</p>
-                    <textarea className="addReceptTextField" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
+                <div className="createReceptFormRecept create-recipe__form-recipe">
+                    <p className="steps create-recipe__step">3. Podaj sposób przygotowania nowego przepisu</p>
+                    <textarea className="addReceptTextField create-recipe__form-recipe-recipe" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
                 </div>
 
-                <button className="createReceptFormButton" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
+                <button className="createReceptFormButton confirm-btn" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
         )
     }

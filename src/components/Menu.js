@@ -38,11 +38,11 @@ class Menu extends Component {
     }
     render() {
         return (
-            <div className="menuFile">
-                <h2 className="nameInMenuFile">{this.props.menu.name}</h2>
-                <div className="daysInMenuFile">
+            <div className="menuFile menu">
+                <h2 className="nameInMenuFile menu__name">{this.props.menu.name}</h2>
+                <div className="daysInMenuFile menu__days">
                     {this.props.menu.days.map((day, index) => (
-                        <div className="dayInMenuFile">
+                        <div className="dayInMenuFile menu__days-item">
                             <h2 className="daysNumbersInMenuFile">Dzień {index + 1} </h2>
                             <h3>{Math.floor((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal))} kcal</h3>
                             <ul className="daysMealsInMenuFile">
@@ -81,17 +81,17 @@ class Menu extends Component {
                 </div>
 
                 {this.state.showRecept ?
-                    <div className="showReceptInMenuList">
-                        <button className="hideReceptInMenuListButton" onClick={this.handleExitRecept}><FaTimesCircle /></button>
-                        <h1 className="receptNameInMenuFile">{this.state.showReceptName}</h1>
-                        <h2 className="receptKcalInMenuFile">Kcal: {Math.floor(this.state.showReceptKcal)}</h2>
-                        <div className="receptComponentsInMenuFile">
+                    <div className="showReceptInMenuList recipe">
+                        <button className="hideReceptInMenuListButton section__icon-button" onClick={this.handleExitRecept}><FaTimesCircle /></button>
+                        <h1 className="receptNameInMenuFile recipe__name">{this.state.showReceptName}</h1>
+                        <h2 className="receptKcalInMenuFile recipe__kcal">Kcal: {Math.floor(this.state.showReceptKcal)}</h2>
+                        <div className="receptComponentsInMenuFile recipe__components">
                             <h2>Składniki:</h2>
                             <ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component =>
-                                <li key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}
+                                <li className="recipe__components-item" key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}
                             </ul>
                         </div>
-                        <div className="receptReceptInMenuFile">
+                        <div className="receptReceptInMenuFile recipe__recipe">
                             <h2>Przepis:</h2>
                             <p>{this.state.showReceptRecepts}</p>
                         </div>
