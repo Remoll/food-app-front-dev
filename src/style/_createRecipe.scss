@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.confirm-btn{
+    background-color: $btn-color;
+    border: 1px solid #333; 
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0 auto 100px;
+    padding: 25px 5px 25px 5px;
+    line-height: 100%;
+    width: 80%;
+    text-align: center;
+}
+
+.create-recipe{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    height: 100%;
+
+    &__step{
+        padding-bottom: 10px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    &__form-btn{
+        @include simple-btn;
+        font-size: 12px;
+        line-height: 16px;
+        height: 28px;
+    }
+
+    &__form-name{
+        height: 115px;
+        padding: 10px 0;
+        border-bottom: 1px solid #000;
+
+        &-name{
+            font-size: 20px;
+            width: 200px;
+        }
+
+        &-multiselect{
+            margin: 0 auto;
+            width: 200px;
+            margin-bottom: 20px;
+
+            &-select-box{
+                position: relative;
+
+                &-name{
+                    width: 100%;
+                }
+
+                &-over-select{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                }
+            }
+
+            &-checkboxes{
+                position: absolute;
+                display: block;
+                text-align: left;
+                border: 1px #dadada solid;
+
+                &-label{
+                    background-color: #fff;
+                    display: block;
+                    &:hover {
+                        background-color: #1e90ff;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &__form-products{
+        padding: 10px 0;
+        border-bottom: 1px solid #000;
+
+        &-list{
+            display: flex;
+            flex-direction: column;
+            margin: 15px 0 15px 20px;
+        }
+
+        &-item{
+            display: flex;
+            margin: 2px 0;
+        }
+
+        &-name{
+            font-size: 13px;
+            width: 60%;
+            text-align: left;
+        }
+
+        &-number{
+            font-size: 13px;
+            width: 15%;
+            margin-bottom: 5px
+        }
+
+        &-kcal{
+            text-align: left;
+            padding-top: 5px;
+            margin: 0 50px 20px 20px;
+            border-top: 1px dotted #000;
+        }
+
+        &-input{
+            &-name{
+                font-size: 13px;
+                width: 60%;
+                text-align: left;
+            }
+
+            &-number{
+                font-size: 13px;
+                width: 15%;
+                margin-bottom: 5px
+            }
+
+            &-measure{
+                display: inline-block;
+                width: 5%
+            }
+        }
+        &-autocomplete-area{
+            margin: 0 auto;
+            position: relative;
+            width: 80%;
+
+            &-list{
+                border: 2px solid #ccc;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                &-btn{
+                    &:nth-child(odd){
+                        text-align: left;
+                        width: 100%;
+                        display: block;
+                        border: none;
+                        background-color: #eee;
+                        cursor: pointer;
+                    }
+
+                    &:nth-child(even){
+                        text-align: left;
+                        width: 100%;
+                        display: block;
+                        border: none;
+                        background-color: #ccc;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    &__form-recipe{
+        padding: 10px 0;
+
+        &-recipe{
+            margin: 20px 0;
+            height: 160px;
+        }
+    }
+}
+
+@media (max-width: 321px) and (orientation: portrait) {
+    .create-recipe__form-name{
+      height: 140px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .confirm-btn{
+        font-size: 20px;
+        width: 70%;
+    }
+
+    .create-recipe{
+        width: 70%;
+        margin: 0 auto;  
+
+        &__step{
+            font-size: 20px;
+        }
+
+        &__form-btn{
+            padding: 7px 7px;
+            height: 32px;
+            font-size: 16px; 
+        }
+        
+        &__form-name{
+            height: 130px;
+            padding: 20px 0;
+
+            &-name{
+                font-size: 20px;
+                width: 300px;
+            }
+
+            &-multiselect{
+                width: 300px;
+                }
+
+            &-checkboxes{
+                font-size: 20px;
+
+                &-label{
+
+                    &-inp{
+                        transform: scale(2);
+                        margin: 3px 10px;
+                    }
+                }
+            }
+        }
+    
+        &__form-products{
+            padding: 20px 0;
+
+            &-name{
+                font-size: 20px;
+            }
+            &-number{
+                font-size: 20px;
+            }
+            &-kcal{
+                font-size: 20px;
+                margin: 10px 70px 40px 20px;
+            }
+            &-input{
+                &-name{
+                    font-size: 20px;
+                }
+                &-number{
+                    font-size: 20px;
+                }
+            }
+            &-autocomplete-area{
+
+                &-list{
+                    &-btn{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    
+        &__form-recipe{
+            padding: 10px 0;
+
+            &-recipe{
+                font-size: 16px;
+                padding: 5px;
+                height: 200px;
+                width: 90%;
+            }
+        }
+    } 
+}

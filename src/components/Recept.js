@@ -1,20 +1,20 @@
 import React from 'react'
-import '../style/Recept.scss'
+// import '../style/Recipe.scss'
 
 const Recept = (props) => {
     const components = props.recept.components.map(component =>
-        <li className="componentInReceptFile recipe__components-item" key={component.name}>{component.name} {component.number} {component.measure}</li>);
+        <li className="recipe__components-item" key={component.name}>{component.name} {component.number} {component.measure}</li>);
     return (
-        <div className="receptFile recipe">
-            <h1 className="nameInReceptFile recipe__name">{props.recept.name}</h1>
-            <h2 className="kcalInReceptFile recipe__kcal">Kcal: {Math.floor(props.recept.kcal)}</h2>
-            <div className="componentsInReceptFile recipe__components">
-                <h2>Składniki:</h2>
-                <ul>{components}</ul>
+        <div className="recipe">
+            <h1 className="recipe__name">{props.recept.name}</h1>
+            <h2 className="recipe__kcal">Kcal: {Math.floor(props.recept.kcal)}</h2>
+            <div className="recipe__components">
+                <h2 className="recipe__components-title">Składniki:</h2>
+                <ul className="recipe__components-list">{components}</ul>
             </div>
-            <div className="receptInReceptFile recipe__recipe">
-                <h2>Przepis:</h2>
-                <p>{props.recept.recept}</p>
+            <div className="recipe__recipe">
+                <h2 className="recipe__recipe-name">Przepis:</h2>
+                <p className="recipe__recipe-recipe">{props.recept.recept}</p>
             </div>
         </div>
     )

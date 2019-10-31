@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/Menu.scss';
+// import '../style/Menu.scss';
 import { FaTimesCircle } from 'react-icons/fa';
 
 class Menu extends Component {
@@ -14,7 +14,7 @@ class Menu extends Component {
     handleShowRecept = (name, components, recepts, kcal) => {
         if (this.state.showRecept && name === this.state.showReceptName) {
             this.setState({
-                showRecept: false
+                showRecept: false,
             })
         } else {
 
@@ -38,62 +38,64 @@ class Menu extends Component {
     }
     render() {
         return (
-            <div className="menuFile menu">
-                <h2 className="nameInMenuFile menu__name">{this.props.menu.name}</h2>
-                <div className="daysInMenuFile menu__days">
+            <div className={`menu ${this.state.showRecept ? 'menu--show-recipe' : ''}`}>
+                <h2 className="menu__name">{this.props.menu.name}</h2>
+                <div className="menu__days">
                     {this.props.menu.days.map((day, index) => (
-                        <div className="dayInMenuFile menu__days-item">
-                            <h2 className="daysNumbersInMenuFile">Dzień {index + 1} </h2>
+                        <div className="menu__days-item">
+                            <h2 className="menu__days-item-nr">Dzień {index + 1} </h2>
                             <h3>{Math.floor((day.breakfast.kcal + day.lunch.kcal + day.diner.kcal + day.tea.kcal + day.supper.kcal))} kcal</h3>
-                            <ul className="daysMealsInMenuFile">
-                                <li key={index + "1"}>
-                                    <p>Śniadanie</p>
-                                    <p>{day.breakfast.name}</p>
-                                    <p>kcal: {Math.floor(day.breakfast.kcal)}</p>
-                                    <button onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recept, day.breakfast.kcal)}>Szczegóły</button>
+                            <ul className="menu__days-item-list">
+                                <li className="menu__days-item-list-item" key={index + "1"}>
+                                    <p className="menu__days-item-list-item-meal">Śniadanie</p>
+                                    <p className="menu__days-item-list-item-name">{day.breakfast.name}</p>
+                                    <p className="menu__days-item-list-item-kcal">kcal: {Math.floor(day.breakfast.kcal)}</p>
+                                    <button className="menu__days-item-list-item-btn" onClick={() => this.handleShowRecept(day.breakfast.name, day.breakfast.components, day.breakfast.recept, day.breakfast.kcal)}>Szczegóły</button>
                                 </li>
-                                <li key={index + "2"}>
-                                    <p>Drugie śniadanie</p>
-                                    <p>{day.lunch.name}</p>
-                                    <p>kcal: {Math.floor(day.lunch.kcal)}</p>
-                                    <button onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recept, day.lunch.kcal)}>Szczegóły</button>
+                                <li className="menu__days-item-list-item" key={index + "2"}>
+                                    <p className="menu__days-item-list-item-meal">Drugie śniadanie</p>
+                                    <p className="menu__days-item-list-item-name">{day.lunch.name}</p>
+                                    <p className="menu__days-item-list-item-kcal">kcal: {Math.floor(day.lunch.kcal)}</p>
+                                    <button className="menu__days-item-list-item-btn" onClick={() => this.handleShowRecept(day.lunch.name, day.lunch.components, day.lunch.recept, day.lunch.kcal)}>Szczegóły</button>
                                 </li>
-                                <li key={index + "3"}>
-                                    <p>Obiad</p>
-                                    <p>{day.diner.name}</p>
-                                    <p>kcal: {Math.floor(day.diner.kcal)}</p>
-                                    <button onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recept, day.diner.kcal)}>Szczegóły</button>
+                                <li className="menu__days-item-list-item" key={index + "3"}>
+                                    <p className="menu__days-item-list-item-meal">Obiad</p>
+                                    <p className="menu__days-item-list-item-name">{day.diner.name}</p>
+                                    <p className="menu__days-item-list-item-kcal">kcal: {Math.floor(day.diner.kcal)}</p>
+                                    <button className="menu__days-item-list-item-btn" onClick={() => this.handleShowRecept(day.diner.name, day.diner.components, day.diner.recept, day.diner.kcal)}>Szczegóły</button>
                                 </li>
-                                <li key={index + "4"}>
-                                    <p>Podwieczorek</p>
-                                    <p>{day.tea.name}</p>
-                                    <p>kcal: {Math.floor(day.tea.kcal)}</p>
-                                    <button onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recept, day.tea.kcal)}>Szczegóły</button>
+                                <li className="menu__days-item-list-item" key={index + "4"}>
+                                    <p className="menu__days-item-list-item-meal">Podwieczorek</p>
+                                    <p className="menu__days-item-list-item-name">{day.tea.name}</p>
+                                    <p className="menu__days-item-list-item-kcal">kcal: {Math.floor(day.tea.kcal)}</p>
+                                    <button className="menu__days-item-list-item-btn" onClick={() => this.handleShowRecept(day.tea.name, day.tea.components, day.tea.recept, day.tea.kcal)}>Szczegóły</button>
                                 </li>
-                                <li key={index + "5"}>
-                                    <p>Kolacja</p>
-                                    <p>{day.supper.name}</p>
-                                    <p>kcal: {Math.floor(day.supper.kcal)}</p>
-                                    <button onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recept, day.supper.kcal)}>Szczegóły</button>
+                                <li className="menu__days-item-list-item" key={index + "5"}>
+                                    <p className="menu__days-item-list-item-meal">Kolacja</p>
+                                    <p className="menu__days-item-list-item-name">{day.supper.name}</p>
+                                    <p className="menu__days-item-list-item-kcal">kcal: {Math.floor(day.supper.kcal)}</p>
+                                    <button className="menu__days-item-list-item-btn" onClick={() => this.handleShowRecept(day.supper.name, day.supper.components, day.supper.recept, day.supper.kcal)}>Szczegóły</button>
                                 </li>
                             </ul>
                         </div>))}
                 </div>
 
                 {this.state.showRecept ?
-                    <div className="showReceptInMenuList recipe">
-                        <button className="hideReceptInMenuListButton section__icon-button" onClick={this.handleExitRecept}><FaTimesCircle /></button>
-                        <h1 className="receptNameInMenuFile recipe__name">{this.state.showReceptName}</h1>
-                        <h2 className="receptKcalInMenuFile recipe__kcal">Kcal: {Math.floor(this.state.showReceptKcal)}</h2>
-                        <div className="receptComponentsInMenuFile recipe__components">
-                            <h2>Składniki:</h2>
-                            <ul>{(this.state.showRecept ? this.state.showReceptComponents.map(component =>
-                                <li className="recipe__components-item" key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}
-                            </ul>
-                        </div>
-                        <div className="receptReceptInMenuFile recipe__recipe">
-                            <h2>Przepis:</h2>
-                            <p>{this.state.showReceptRecepts}</p>
+                    <div className="menu__recipe-section">
+                        <div className="recipe">
+                            <button className="section__icon-button" onClick={this.handleExitRecept}><FaTimesCircle /></button>
+                            <h1 className="recipe__name">{this.state.showReceptName}</h1>
+                            <h2 className="recipe__kcal">Kcal: {Math.floor(this.state.showReceptKcal)}</h2>
+                            <div className="recipe__components">
+                                <h2 className="recipe__components-title">Składniki:</h2>
+                                <ul className="recipe__components-list">{(this.state.showRecept ? this.state.showReceptComponents.map(component =>
+                                    <li className="recipe__components-item" key={component.name}>{component.name} x{component.number} {component.measure}</li>) : null)}
+                                </ul>
+                            </div>
+                            <div className="recipe__recipe">
+                                <h2 className="recipe__recipe-name">Przepis:</h2>
+                                <p className="recipe__recipe-recipe">{this.state.showReceptRecepts}</p>
+                            </div>
                         </div>
                     </div> : null}
 

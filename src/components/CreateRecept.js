@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/CreateRecept.scss'
+// import '../style/CreateRecept.scss'
 
 class CreateRecept extends Component {
     state = {
@@ -129,7 +129,7 @@ class CreateRecept extends Component {
             type: `${this.state.breakfast ? "breakfast " : ""}${this.state.lunch ? "lunch " : ""}${this.state.diner ? "diner " : ""}${this.state.tea ? "tea " : ""}${this.state.supper ? "supper" : ""}`,
             recept: this.state.addedRecept,
         }
-        fetch('http://localhost:3000/addrecept', {
+        fetch('https://foodapppp.herokuapp.com/addrecept', {
             method: 'POST',
             body: JSON.stringify(addedRecept),
             headers: {
@@ -206,62 +206,62 @@ class CreateRecept extends Component {
         let kcal = 0;
         this.state.addedProducts.forEach(product => kcal += product.kcal * product.number)
         return (
-            <div className="createReceptForm create-recipe">
+            <div className="create-recipe">
 
-                <div className="createReceptFormName create-recipe__form-name">
-                    <p className="steps create-recipe__step">1. Nazwij przepis oraz opcjonalnie wybierz jego typ</p>
-                    <input className="createReceptName create-recipe__form-name-name" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
-                    <div className="multiselect create-recipe__form-name-multiselect">
-                        <div className="selectBox create-recipe__form-name-multiselect-select-box" onClick={this.handleShowCheckboxes}>
-                            <select>
+                <div className="create-recipe__form-name">
+                    <p className="create-recipe__step">1. Nazwij przepis oraz opcjonalnie wybierz jego typ</p>
+                    <input className="create-recipe__form-name-name" value={this.state.addedReceptName} onChange={this.handleAddedReceptName} type="text" placeholder="nazwij przepis" />
+                    <div className="create-recipe__form-name-multiselect">
+                        <div className="create-recipe__form-name-multiselect-select-box" onClick={this.handleShowCheckboxes}>
+                            <select className="create-recipe__form-name-multiselect-select-box-name">
                                 <option>Wybierz typ dania</option>
                             </select>
-                            <div className="overSelect create-recipe__form-name-multiselect-select-box-over-select"></div>
+                            <div className="create-recipe__form-name-multiselect-select-box-over-select"></div>
                         </div>
-                        {!this.state.expanded ? null : <div className="checkboxes create-recipe__form-name-multiselect-checkboxes">
-                            <label htmlFor="breakfast">
-                                <input onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
-                            <label htmlFor="lunch">
-                                <input onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Drugie śniadanie</label>
-                            <label htmlFor="diner">
-                                <input onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Obiad</label>
-                            <label htmlFor="tea">
-                                <input onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Podwieczorek</label>
-                            <label htmlFor="supper">
-                                <input onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
+                        {!this.state.expanded ? null : <div className="create-recipe__form-name-multiselect-checkboxes">
+                            <label className="create-recipe__form-name-multiselect-checkboxes-label" htmlFor="breakfast">
+                                <input className="create-recipe__form-name-multiselect-checkboxes-label-inp" onChange={this.handleSelectReceptType} checked={this.state.breakfast} type="checkbox" id="breakfast" />Śniadanie</label>
+                            <label className="create-recipe__form-name-multiselect-checkboxes-label" htmlFor="lunch">
+                                <input className="create-recipe__form-name-multiselect-checkboxes-label-inp" onChange={this.handleSelectReceptType} checked={this.state.lunch} type="checkbox" id="lunch" />Drugie śniadanie</label>
+                            <label className="create-recipe__form-name-multiselect-checkboxes-label" htmlFor="diner">
+                                <input className="create-recipe__form-name-multiselect-checkboxes-label-inp" onChange={this.handleSelectReceptType} checked={this.state.diner} type="checkbox" id="diner" />Obiad</label>
+                            <label className="create-recipe__form-name-multiselect-checkboxes-label" htmlFor="tea">
+                                <input className="create-recipe__form-name-multiselect-checkboxes-label-inp" onChange={this.handleSelectReceptType} checked={this.state.tea} type="checkbox" id="tea" />Podwieczorek</label>
+                            <label className="create-recipe__form-name-multiselect-checkboxes-label" htmlFor="supper">
+                                <input className="create-recipe__form-name-multiselect-checkboxes-label-inp" onChange={this.handleSelectReceptType} checked={this.state.supper} type="checkbox" id="supper" />Kolacja</label>
                         </div>}
                     </div>
                 </div>
 
                 <div className="createReceptFormProdukts create-recipe__form-products">
                     <div>
-                        <p className="steps create-recipe__step">2. Wyszukaj i dodaj potrzebne składniki</p>
-                        <ul className="addProductsList create-recipe__form-products-list">{this.state.addedProducts.map((product, index) => (
-                            <li className="addProductsItem create-recipe__form-products-item" key={index}>
-                                <p className="addProductsItemName create-recipe__form-products-name" id={index}>{product.name.toUpperCase()}</p>
-                                <p className="addProductsItemNumber create-recipe__form-products-number" id={index}>{product.number} {product.measure}</p>
-                                <button className="createReceptButtons create-recipe__form-btn" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
+                        <p className="create-recipe__step">2. Wyszukaj i dodaj potrzebne składniki</p>
+                        <ul className="create-recipe__form-products-list">{this.state.addedProducts.map((product, index) => (
+                            <li className="create-recipe__form-products-item" key={index}>
+                                <p className="create-recipe__form-products-name" id={index}>{product.name.toUpperCase()}</p>
+                                <p className="create-recipe__form-products-number" id={index}>{product.number} {product.measure}</p>
+                                <button className="create-recipe__form-btn" id={index} onClick={this.handleDeleteExactProduct}>usuń</button>
                             </li>))}
                         </ul>
-                        <p className="addProductsItemKcal create-recipe__form-products-kcal">Kcal: {Math.floor(kcal)}</p>
+                        <p className="create-recipe__form-products-kcal">Kcal: {Math.floor(kcal)}</p>
                     </div>
 
-                    <input className="addProductsItemName create-recipe__form-products-input-name" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
-                    <input className="addProductsItemNumber create-recipe__form-products-input-number" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} />
-                    <p className="addProductsItemMeasurer create-recipe__form-products-input-measure">{this.state.newProduct.measure}</p>
+                    <input className="create-recipe__form-products-input-name" onChange={this.state.itemSelected ? null : this.handleChangeExactProduct} onFocus={this.handleFocus} onBlur={this.handleBlur} type="text" value={this.state.newProduct.name} placeholder="podaj nazwę produktu" />
+                    <input className="create-recipe__form-products-input-number" onChange={this.handleChangeExactProduct} type="number" value={this.state.newProduct.number} />
+                    <p className="create-recipe__form-products-input-measure">{this.state.newProduct.measure}</p>
 
-                    <div className="addProductsItemArea create-recipe__form-products-autocomplete-area">
-                        {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="addProductsAutocompleteList create-recipe__form-products-autocomplete-area-list">{inputSearch.map((product, index) => <button key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
+                    <div className="create-recipe__form-products-autocomplete-area">
+                        {this.state.newProduct.name.length > 2 && this.state.newItemInputFocus ? <div className="create-recipe__form-products-autocomplete-area-list">{inputSearch.map((product, index) => <button className="create-recipe__form-products-autocomplete-area-list-btn" key={index} onClick={this.handleSelectProduct} value={product.name}>{product.name}</button>)}</div> : null}
                     </div>
-                    <button className="createReceptButtons create-recipe__form-btn" onClick={this.handleAddProduct}>dodaj produkt</button>
+                    <button className="create-recipe__form-btn" onClick={this.handleAddProduct}>dodaj produkt</button>
                 </div>
 
-                <div className="createReceptFormRecept create-recipe__form-recipe">
-                    <p className="steps create-recipe__step">3. Podaj sposób przygotowania nowego przepisu</p>
-                    <textarea className="addReceptTextField create-recipe__form-recipe-recipe" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
+                <div className="create-recipe__form-recipe">
+                    <p className="create-recipe__step">3. Podaj sposób przygotowania nowego przepisu</p>
+                    <textarea className="create-recipe__form-recipe-recipe" value={this.state.addedRecept} onChange={this.handleAddedRecept} cols="40" rows="5" placeholder="wprowadź przepis"></textarea>
                 </div>
 
-                <button className="createReceptFormButton confirm-btn" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
+                <button className="confirm-btn" onClick={this.handleConfirmAddedRecept}>GOTOWE - DODAJ PRZEPIS</button>
             </div>
         )
     }

@@ -1,0 +1,127 @@
+@import '_variables';
+@import '_mixins';
+@import '_confirmBtn';
+@import '_section';
+@import '_recipe';
+@import '_menu';
+@import '_createMenu';
+@import '_createRecipe';
+@import '_shopingList';
+
+*{
+    margin: 0;
+    padding: 0
+}
+.app{
+    display: flex;
+    width: 100vw;
+    margin: 0 auto;
+    
+    &__title{
+        padding: 10px 0;
+        width: 100vw;
+        font-family: 'Gloria Hallelujah', cursive;
+        font-size: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: $main-color;
+        color: $title-color;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    &__main-menu{
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+        list-style: none;
+        background-color: $main-color;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        &-element{
+            padding: 10px 0;
+            color: #bbb;
+            display: flex;
+            flex-basis:33%;
+            flex-direction: column;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Loved by the King', cursive;
+            font-size: 15px;
+            &.active{
+                color: $active-element-color;
+              }
+        }
+        &-icon{
+            text-align: center;
+            font-size: 30px;
+            margin: 0 auto;
+        }
+    }
+
+    &__selected-option{
+        text-align: center;
+        width: 200vw;
+        height: 100vh;
+        padding: 80px 0;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .app{
+        &__title{
+            font-size: 50px;
+        }
+    
+        &__main-menu{
+            font-size: 30px;
+            &-element{
+                font-size: 30px;
+            }
+            &-icon{
+                font-size: 50px;
+            }
+        }
+    
+        &__selected-option{
+            padding: 130px 0;
+        }
+    }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+    .app{
+        height: 100vh;
+        &__title{
+            font-size: 36px;
+        }
+        &__main-menu{
+            width: 100px;
+            height: 100vh;
+            padding-top: 90px;
+            flex-direction: column;
+            &-element{
+                padding: 10px 0;
+                font-size: 20px;
+                justify-content: center;
+            }
+            &-icon{
+                font-size: 30px;
+            }
+        }
+    
+        &__selected-option{
+            width: 100vw;
+            padding: 92px 0 0 100px;
+        }
+    }
+}

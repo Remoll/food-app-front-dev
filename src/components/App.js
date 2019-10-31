@@ -1,9 +1,7 @@
-// Nowa funkcjonalność: Wpisujesz jakie masz rzeczy w lodówce i program szuka jaką receptę możesz wykonać
-
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import { FaAppleAlt, FaDrumstickBite, FaReceipt, FaShoppingCart, } from "react-icons/fa";
-import '../style/App.scss';
+import '../style/style.scss';
 import Recepts from './Recepts';
 import Menus from './Menus';
 import ShopingList from './ShopingList';
@@ -18,7 +16,7 @@ class App extends Component {
 
   componentDidMount() {
 
-    fetch(`http://localhost:3000/getfoods`, {
+    fetch(`https://foodapppp.herokuapp.com/getfoods`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -26,7 +24,7 @@ class App extends Component {
         products: data
       }));
 
-    fetch(`http://localhost:3000/getrecepts`, {
+    fetch(`https://foodapppp.herokuapp.com/getrecepts`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -34,7 +32,7 @@ class App extends Component {
         recepts: data
       }));
 
-    fetch(`http://localhost:3000/getmenu`, {
+    fetch(`https://foodapppp.herokuapp.com/getmenu`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -44,7 +42,7 @@ class App extends Component {
   };
 
   upgradeRecepts() {
-    fetch(`http://localhost:3000/getrecepts`, {
+    fetch(`https://foodapppp.herokuapp.com/getrecepts`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -54,7 +52,7 @@ class App extends Component {
   }
 
   upgradeMenus() {
-    fetch(`http://localhost:3000/getmenu`, {
+    fetch(`https://foodapppp.herokuapp.com/getmenu`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -71,16 +69,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="allSite app">
+        <div className="app">
 
-          <h1 className="appTitle app__title">FOOD<FaAppleAlt />app</h1>
-          <nav className="mainMenu app__main-menu">
-            <NavLink to="/food-app-front-dev/recepts" className='element app__menu-element'><FaDrumstickBite className="menuIcon app__menu-icon" />Przepisy</NavLink>
-            <NavLink to="/food-app-front-dev/menu" className='element app__menu-element'><FaReceipt className="menuIcon menuIcon app__menu-icon" />Jadłospisy</NavLink>
-            <NavLink to="/food-app-front-dev/shopinglist" className='element app__menu-element'><FaShoppingCart className="menuIcon menuIcon app__menu-icon" />Zakupy</NavLink>
+          <h1 className="app__title">FOOD<FaAppleAlt />app</h1>
+          <nav className="app__main-menu">
+            <NavLink to="/food-app-front-dev/recepts" className='app__main-menu-element'><FaDrumstickBite className="app__main-menu-icon" />Przepisy</NavLink>
+            <NavLink to="/food-app-front-dev/menu" className='app__main-menu-element'><FaReceipt className="app__main-menu-icon" />Jadłospisy</NavLink>
+            <NavLink to="/food-app-front-dev/shopinglist" className='app__main-menu-element'><FaShoppingCart className="app__main-menu-icon" />Zakupy</NavLink>
           </nav>
 
-          <div className="selectedOption app__selected-option">
+          <div className="app__selected-option">
             <Switch>
               <Route path="/food-app-front-dev/recepts" render={(props) => <Recepts {...props} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
               <Route path="/food-app-front-dev/menu" render={(props) => <Menus {...props} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />

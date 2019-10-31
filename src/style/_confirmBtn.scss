@@ -1,0 +1,18 @@
+.confirm-btn{
+    @include simple-btn;
+    padding: 25px 5px 25px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0 auto 100px;
+    
+    line-height: 100%;
+    width: 80%;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .confirm-btn{
+        font-size: 20px;
+        width: 70%;
+    }
+}

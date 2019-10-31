@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Menu from './Menu';
-import '../style/Section.scss';
+// import '../style/Section.scss';
 import CreateMenu from './CreateMenu';
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import ShopingList from './ShopingList';
@@ -17,7 +17,7 @@ class Menus extends Component {
         this.setState({
             showMenu: true,
             activeMenu: -1,
-            showReceptChangeClass: "rightSideElo"
+            showReceptChangeClass: "section--create"
         })
     }
     handleSearchMenu = (e) => {
@@ -30,7 +30,7 @@ class Menus extends Component {
         this.setState({
             showMenu: true,
             activeMenu: (e.target.id - 1),
-            showReceptChangeClass: "rightSideElo"
+            showReceptChangeClass: "section--create"
         })
     }
 
@@ -43,35 +43,35 @@ class Menus extends Component {
     render() {
         const menus = this.props.menus.filter(menu => menu.name.toLowerCase().includes(this.state.searchMenu.toLowerCase()));
         return (
-            <div className={`receptsMenu ${this.state.showReceptChangeClass} section`}>
+            <div className={`section ${this.state.showReceptChangeClass}`}>
 
-                <div section__right-sidev className="leftSide section__left-side">
-                    <button className="createReceptButton section__icon-button" onClick={this.handleCreateMenu}><FaPlusCircle /></button>
-                    <div className="searchReceptSection section__search-section">
-                        <form>
-                            <label>Szukaj</label>
-                            <input className="searchRecept section__search-inp" onChange={this.handleSearchMenu} value={this.state.searchMenu}></input>
+                <div className="section__left-side">
+                    <button className="section__icon-button" onClick={this.handleCreateMenu}><FaPlusCircle /></button>
+                    <div className="section__search-section">
+                        <form className="section__search-section-form">
+                            <label className="section__search-section-form-label">Szukaj</label>
+                            <input className="section__search-section-form-inp" onChange={this.handleSearchMenu} value={this.state.searchMenu}></input>
                         </form>
                     </div>
-                    <ul className="receptList section__list">
+                    <ul className="section__list">
                         {menus.map(menu => (
-                            <li className="receptListItem section__item" key={menu.id}>
-                                <p className="receptListItemName section__item-name">{menu.name}, dni: {menu.days.length}</p>
-                                <div className="listButtonSection section__item-btn-section">
-                                    <Link to="/food-app-front-dev/shopinglist" className="receptListItemButton section__item-btn" onClick={() => this.props.setShopingListActiveItem(menu)} >Stwórz listę zakupów</Link>
-                                    <button className="receptListItemButton section__item-btn" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button>
+                            <li className="section__item" key={menu.id}>
+                                <p className="section__item-name">{menu.name}, dni: {menu.days.length}</p>
+                                <div className="section__item-btn-section">
+                                    <Link to="/food-app-front-dev/shopinglist" className="section__item-btn" onClick={() => this.props.setShopingListActiveItem(menu)} >Stwórz listę zakupów</Link>
+                                    <button className="section__item-btn" id={menu.id} onClick={this.handleShowMenu}>Pokaż</button>
                                 </div>
                             </li>))}
                     </ul>
                 </div>
 
-                <div className="rightSide section__right-side">
+                <div className="section__right-side">
                     {this.state.showMenu ?
                         (this.state.activeMenu === -1 ?
                             <CreateMenu handleHideRightSite={this.handleHideRightSite} upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} />
                             : <Menu menu={this.props.menus[this.state.activeMenu]} />)
                         : <h2>Wybierz istniejący jadłospis lub stwórz nowy aby wyświetlić</h2>}
-                    <button className="createReceptButton section__icon-button" onClick={this.handleHideRightSite}><FaArrowAltCircleLeft /></button>
+                    <button className="section__icon-button" onClick={this.handleHideRightSite}><FaArrowAltCircleLeft /></button>
                 </div>
 
             </div>

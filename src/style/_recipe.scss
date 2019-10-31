@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.recipe{
+    height: 100%;
+    overflow: scroll;
+    &__name{
+        margin: 10px auto 20px;
+        text-align: center;
+    }
+    &__components{
+        text-align: left;
+        padding: 20px 0 40px;
+        &-list{
+            list-style: none;
+        }
+        &-item{
+            font-size: 16px;
+            padding-bottom: 10px;
+            text-align: left;
+            border-bottom: 1px dotted #000;
+            &:nth-child(1){
+                padding-top: 30px
+            }
+        }
+    }
+    &__recipe{
+        padding-bottom: 150px;
+        text-align: left;
+        &-name{
+            padding-bottom: 20px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .recipe{
+        &__name{
+            font-size: 40px;
+        }
+        &__components{
+            padding: 20px 100px 40px;
+            &-title{
+                font-size: 30px;
+            }
+            &-item{ 
+                font-size: 20px;
+                padding: 20px 0 10px;  
+                &:nth-child(1){
+                    padding-top: 40px
+                } 
+            }
+        }
+        &__recipe{
+            padding: 0 100px 150px 100px;
+            text-align: left;
+            &-name{
+                padding-bottom: 20px;
+                font-size: 30px;
+            }
+            &-recipe{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+    .recipe{
+        height: 100%;
+        overflow: scroll;
+        padding: 0 50px;
+        &__name{   
+            font-size: 25px;
+            margin: 10px auto 20px;
+            text-align: center; 
+        }
+        &__components{
+            text-align: left;
+            padding: 20px 0 40px;
+            &-item{    
+                font-size: 16px;
+                padding-bottom: 10px;
+                text-align: left;
+                border-bottom: 1px dotted #000;
+                &:nth-child(1){
+                    padding-top: 30px
+                }
+            }
+        }
+        &__recipe{ 
+            padding-bottom: 150px;
+            padding-left: 0;
+            text-align: left;
+            &-name{
+                padding-bottom: 20px;
+            }
+            &-recipe{
+                font-size: 16px;
+            }  
+        }
+    }
+}

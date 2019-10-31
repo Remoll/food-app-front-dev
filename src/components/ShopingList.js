@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/ShopingList.scss';
+// import '../style/ShopingList.scss';
 
 class ShopingList extends Component {
     state = {
@@ -60,14 +60,16 @@ class ShopingList extends Component {
 
     render() {
         return (
-            <div className="shopingListFile shoping-list">
-                {this.props.item === "nie dodano danych" ? <h2>Wyszukaj odpowiednią receptę lub jadłospis i następnie wygeneruj listę zakupów aby wyświetlić</h2> : <h2 className="shopingListName shoping-list__name">{this.props.item.name}</h2>}
-                {this.state.shopingList === [] ? null : <ul className="shopingList shoping-list__list">
+            <div className="shoping-list">
+                {this.props.item === "nie dodano danych" ?
+                    <h2>Wyszukaj odpowiednią receptę lub jadłospis i następnie wygeneruj listę zakupów aby wyświetlić</h2>
+                    : <h2 className="shoping-list__name">{this.props.item.name}</h2>}
+                {this.state.shopingList === [] ? null : <ul className="shoping-list__list">
                     {this.state.shopingList.map(component => (
-                        <li className="shopingListItemItem shoping-list__item" key={component.key}>
-                            <p className="shopingListItemName shoping-list__item-name">{component.name}</p>
-                            <p className="shopingListItemNumber shoping-list__item-number">{component.number} {component.measure}</p>
-                            <input className="shopingListItemCheckbox shoping-list__item-checkbox" type="checkbox" onChange={() => this.handleChecked(component.key)} checked={component.checked}></input>
+                        <li className="shoping-list__item" key={component.key}>
+                            <p className="shoping-list__item-name">{component.name}</p>
+                            <p className="shoping-list__item-number">{component.number} {component.measure}</p>
+                            <input className="shoping-list__item-checkbox" type="checkbox" onChange={() => this.handleChecked(component.key)} checked={component.checked}></input>
                         </li>
                     ))}
                 </ul>}
