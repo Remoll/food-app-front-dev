@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Recept from './Recept';
 import CreateRecept from './CreateRecept';
-// import '../style/Section.scss';
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import ShopingList from './ShopingList';
 import { FaPlusCircle, FaArrowAltCircleLeft } from 'react-icons/fa';

@@ -1,0 +1,24 @@
+.loading-screen{
+    width: 100vw;
+    height: 100vh;
+
+    &__statement{
+        text-align: center;
+        margin: 40px 10px 0;
+    }
+
+    &__loader{
+        margin: 10px auto;
+        border: 12px solid #eee;
+        border-top: 12px solid $active-element-color;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+}

@@ -1,5 +1,4 @@
 import React from 'react'
-// import '../style/Recipe.scss'
 
 const Recept = (props) => {
     const components = props.recept.components.map(component =>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import '../style/Menu.scss';
 import { FaTimesCircle } from 'react-icons/fa';
 
 class Menu extends Component {

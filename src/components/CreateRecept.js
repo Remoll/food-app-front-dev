@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import '../style/CreateRecept.scss'
 
 class CreateRecept extends Component {
     state = {
@@ -129,7 +128,7 @@ class CreateRecept extends Component {
             type: `${this.state.breakfast ? "breakfast " : ""}${this.state.lunch ? "lunch " : ""}${this.state.diner ? "diner " : ""}${this.state.tea ? "tea " : ""}${this.state.supper ? "supper" : ""}`,
             recept: this.state.addedRecept,
         }
-        fetch('https://foodapppp.herokuapp.com/addrecept', {
+        fetch(`${this.props.serverAdress}/addrecept`, {
             method: 'POST',
             body: JSON.stringify(addedRecept),
             headers: {

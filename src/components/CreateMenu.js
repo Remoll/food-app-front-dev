@@ -1,6 +1,4 @@
-/* eslint-disable no-loop-func */
 import React, { Component } from 'react';
-// import '../style/CreateMenu.scss';
 import { FaTimesCircle } from 'react-icons/fa';
 
 class CreateMenu extends Component {
@@ -331,7 +329,7 @@ class CreateMenu extends Component {
     }
 
     handleConfirmMenu = () => {
-        fetch('https://foodapppp.herokuapp.com/addmenu', {
+        fetch(`${this.props.serverAdress}/addmenu`, {
             method: 'POST',
             body: JSON.stringify(this.state.newMenu),
             headers: {

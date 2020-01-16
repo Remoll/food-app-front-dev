@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Menu from './Menu';
-// import '../style/Section.scss';
 import CreateMenu from './CreateMenu';
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import ShopingList from './ShopingList';
