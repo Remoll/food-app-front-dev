@@ -81,181 +81,86 @@ class CreateMenu extends Component {
                 type: "breakfast lunch diner tea supper"
             }
 
-            let breakfastCounter = .5
-            let lunchCounter = .5
-            let dinerCounter = .5
-            let teaCounter = .5
-            let supperCounter = .5
+            const mealsOnDay = [
+                {
+                    mealsCollection: [],
+                    counter: .5,
+                    name: "breakfast",
+                    minKcalPercent: .28,
+                    maxKcalPercent: .32
+                },
+                {
+                    mealsCollection: [],
+                    counter: .5,
+                    name: "lunch",
+                    minKcalPercent: .13,
+                    maxKcalPercent: .17
+                },
+                {
+                    mealsCollection: [],
+                    counter: .5,
+                    name: "diner",
+                    minKcalPercent: .28,
+                    maxKcalPercent: .32
+                },
+                {
+                    mealsCollection: [],
+                    counter: .5,
+                    name: "tea",
+                    minKcalPercent: .08,
+                    maxKcalPercent: .12
+                },
+                {
+                    mealsCollection: [],
+                    counter: .5,
+                    name: "supper",
+                    minKcalPercent: .18,
+                    maxKcalPercent: .22
+                }
+            ]
 
-            let breakfasts = []
-            let lunchs = []
-            let diners = []
-            let teas = []
-            let suppers = []
+            const mealTypes = []
 
-            if (breakfasts.length === 0) {
+            mealsOnDay.forEach((meal, index) => {
                 let kcal = this.state.kcal
                 do {
-                    breakfasts = recepts.filter(item =>
-                        item.type.includes("breakfast")
-                        && item.kcal > kcal * .28
-                        && item.kcal < kcal * .32)
+                    meal.mealsCollection = recepts.filter(item =>
+                        item.type.includes(meal.name)
+                        && item.kcal > kcal * meal.minKcalPercent
+                        && item.kcal < kcal * meal.maxKcalPercent)
                     kcal /= 2
-                    breakfastCounter *= 2
-                } while (breakfasts.length === 0 && breakfastCounter < 100)
-            }
-            if (breakfasts.length === 0) {
-                breakfastCounter = 2
-                let kcal = this.state.kcal
-                do {
-                    breakfasts = recepts.filter(item =>
-                        item.type.includes("breakfast")
-                        && item.kcal > kcal * .28
-                        && item.kcal < kcal * .32)
-                    kcal *= 2
-                    breakfastCounter /= 2
-                } while (breakfasts.length === 0 && breakfastCounter > 0.06)
-            }
+                    meal.counter *= 2
+                } while (meal.mealsCollection.length === 0 && meal.counter < 100)
 
-            if (lunchs.length === 0) {
-                let kcal = this.state.kcal
-                do {
-                    lunchs = recepts.filter(item =>
-                        item.type.includes("lunch")
-                        && item.kcal > kcal * .13
-                        && item.kcal < kcal * .17)
-                    kcal /= 2
-                    lunchCounter *= 2
-                } while (lunchs.length === 0 && lunchCounter < 100)
-            }
-            if (lunchs.length === 0) {
-                lunchCounter = 2
-                let kcal = this.state.kcal
-                do {
-                    lunchs = recepts.filter(item =>
-                        item.type.includes("lunch")
-                        && item.kcal > kcal * .13
-                        && item.kcal < kcal * .17)
-                    kcal *= 2
-                    lunchCounter /= 2
-                } while (lunchs.length === 0 && lunchCounter > 0.06)
-            }
+                if (meal.mealsCollection.length === 0) {
+                    meal.counter = 2
+                    let kcal = this.state.kcal
+                    do {
+                        meal.mealsCollection = recepts.filter(item =>
+                            item.type.includes(meal.name)
+                            && item.kcal > kcal * meal.minKcalPercent
+                            && item.kcal < kcal * meal.maxKcalPercent)
+                        kcal *= 2
+                        meal.counter /= 2
+                    } while (meal.mealsCollection.length === 0 && meal.counter > 0.06)
+                }
 
-            if (diners.length === 0) {
-                let kcal = this.state.kcal
-                do {
-                    diners = recepts.filter(item =>
-                        item.type.includes("diner")
-                        && item.kcal > kcal * .28
-                        && item.kcal < kcal * .32)
-                    kcal /= 2
-                    dinerCounter *= 2
-                } while (diners.length === 0 && dinerCounter < 100)
-            }
-            if (diners.length === 0) {
-                dinerCounter = 2
-                let kcal = this.state.kcal
-                do {
-                    diners = recepts.filter(item =>
-                        item.type.includes("diner")
-                        && item.kcal > kcal * .28
-                        && item.kcal < kcal * .32)
-                    kcal *= 2
-                    dinerCounter /= 2
-                } while (diners.length === 0 && dinerCounter > 0.06)
-            }
+                mealTypes[index] = mealsOnDay[index].mealsCollection.length === 0 ?
+                    invalidMeal
+                    : mealsOnDay[index].mealsCollection[Math.floor(Math.random() * mealsOnDay[index].mealsCollection.length)]
+                mealTypes[index].kcal *= mealsOnDay[index].counter
+                mealTypes[index].components.forEach(component => component.number *= mealsOnDay[index].counter)
+            })
 
-            if (teas.length === 0) {
-                let kcal = this.state.kcal
-                do {
-                    teas = recepts.filter(item =>
-                        item.type.includes("tea")
-                        && item.kcal > kcal * .08
-                        && item.kcal < kcal * .12)
-                    kcal /= 2
-                    teaCounter *= 2
-                } while (teas.length === 0 && teaCounter < 100)
-            }
-            if (teas.length === 0) {
-                teaCounter = 2
-                let kcal = this.state.kcal
-                do {
-                    teas = recepts.filter(item =>
-                        item.type.includes("tea")
-                        && item.kcal > kcal * .08
-                        && item.kcal < kcal * .12)
-                    kcal *= 2
-                    teaCounter /= 2
-                } while (teas.length === 0 && teaCounter > 0.06)
-            }
-
-            if (suppers.length === 0) {
-                let kcal = this.state.kcal
-                do {
-                    suppers = recepts.filter(item =>
-                        item.type.includes("supper")
-                        && item.kcal > kcal * .18
-                        && item.kcal < kcal * .22)
-                    kcal /= 2
-                    supperCounter *= 2
-                } while (suppers.length === 0 && supperCounter < 100)
-            }
-            if (suppers.length === 0) {
-                supperCounter = 2
-                let kcal = this.state.kcal
-                do {
-                    suppers = recepts.filter(item =>
-                        item.type.includes("supper")
-                        && item.kcal > kcal * .18
-                        && item.kcal < kcal * .22)
-                    kcal /= 2
-                    supperCounter *= 2
-                } while (suppers.length === 0 && supperCounter > 0.06)
-            }
-
-            const breakfast = breakfasts.length === 0 ?
-                invalidMeal
-                : breakfasts[Math.floor(Math.random() * breakfasts.length)]
-
-            const lunch = lunchs.length === 0 ?
-                invalidMeal
-                : lunchs[Math.floor(Math.random() * lunchs.length)]
-
-            const diner = diners.length === 0 ?
-                invalidMeal
-                : diners[Math.floor(Math.random() * diners.length)]
-
-            const tea = teas.length === 0 ?
-                invalidMeal
-                : teas[Math.floor(Math.random() * teas.length)]
-
-            const supper = suppers.length === 0 ?
-                invalidMeal
-                : suppers[Math.floor(Math.random() * suppers.length)]
-
-            breakfast.kcal *= breakfastCounter
-            breakfast.components.forEach(component => component.number *= breakfastCounter)
-
-            lunch.kcal *= lunchCounter
-            lunch.components.forEach(component => component.number *= lunchCounter)
-
-            diner.kcal *= dinerCounter
-            diner.components.forEach(component => component.number *= dinerCounter)
-
-            tea.kcal *= teaCounter
-            tea.components.forEach(component => component.number *= teaCounter)
-
-            supper.kcal *= supperCounter
-            supper.components.forEach(component => component.number *= supperCounter)
-
-            const dayKcal = (breakfast.kcal + lunch.kcal + diner.kcal + tea.kcal + supper.kcal);
+            let dayKcal = 0
+            mealTypes.forEach(meal => dayKcal += meal.kcal);
 
             const day = {
-                breakfast,
-                lunch,
-                diner,
-                tea,
-                supper,
+                breakfast: mealTypes[0],
+                lunch: mealTypes[1],
+                diner: mealTypes[2],
+                tea: mealTypes[3],
+                supper: mealTypes[4],
                 dayKcal
             }
 
