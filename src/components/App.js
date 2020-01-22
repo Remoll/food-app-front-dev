@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import { FaAppleAlt, FaDrumstickBite, FaReceipt, FaShoppingCart, } from "react-icons/fa";
 import '../style/style.scss';
 import Recepts from './Recepts';
