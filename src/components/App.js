@@ -13,7 +13,7 @@ class App extends Component {
     recepts: [],
     menus: [],
     shopingListActiveItem: "nie dodano danych",
-    serverAdress: "https://git.heroku.com/foodapppp.git",
+    serverAdress: "https://foodapppp.herokuapp.com",
     dataLoaded: false
   }
 
