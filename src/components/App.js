@@ -78,17 +78,17 @@ class App extends Component {
 
             <h1 className="app__title">FOOD<FaAppleAlt />app</h1>
             <nav className="app__main-menu">
-              <NavLink to="/food-app-front-dev/recepts" className='app__main-menu-element'><FaDrumstickBite className="app__main-menu-icon" />Przepisy</NavLink>
-              <NavLink to="/food-app-front-dev/menu" className='app__main-menu-element'><FaReceipt className="app__main-menu-icon" />Jadłospisy</NavLink>
-              <NavLink to="/food-app-front-dev/shopinglist" className='app__main-menu-element'><FaShoppingCart className="app__main-menu-icon" />Zakupy</NavLink>
+              <NavLink to="/recepts" className='app__main-menu-element'><FaDrumstickBite className="app__main-menu-icon" />Przepisy</NavLink>
+              <NavLink to="/menu" className='app__main-menu-element'><FaReceipt className="app__main-menu-icon" />Jadłospisy</NavLink>
+              <NavLink to="/shopinglist" className='app__main-menu-element'><FaShoppingCart className="app__main-menu-icon" />Zakupy</NavLink>
             </nav>
 
             <div className="app__selected-option">
               <Switch>
-                <Route path="/food-app-front-dev/recepts" render={(props) => <Recepts {...props} serverAdress={this.state.serverAdress} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
-                <Route path="/food-app-front-dev/menu" render={(props) => <Menus {...props} serverAdress={this.state.serverAdress} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
-                <Route path="/food-app-front-dev/shopinglist" render={(props) => <ShopingList {...props} upgradeMenus={this.upgradeMenus.bind(this)} item={this.state.shopingListActiveItem} />} />
-                <Route path="/" render={() => (<Redirect to="/food-app-front-dev/recepts" />)} />
+                <Route path="/recepts" render={(props) => <Recepts {...props} serverAdress={this.state.serverAdress} upgradeRecepts={this.upgradeRecepts.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} products={this.state.products} recepts={this.state.recepts} />} />
+                <Route path="/menu" render={(props) => <Menus {...props} serverAdress={this.state.serverAdress} upgradeMenus={this.upgradeMenus.bind(this)} setShopingListActiveItem={this.setShopingListActiveItem.bind(this)} recepts={this.state.recepts} menus={this.state.menus} />} />
+                <Route path="/shopinglist" render={(props) => <ShopingList {...props} upgradeMenus={this.upgradeMenus.bind(this)} item={this.state.shopingListActiveItem} />} />
+                <Route path="/" render={() => (<Redirect to="/recepts" />)} />
               </Switch>
             </div>
 
