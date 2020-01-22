@@ -55,6 +55,14 @@ class CreateMenu extends Component {
             alert("Nie podałeś dziennej kaloryczności")
             return
         }
+        if (kcal < 1300) {
+            alert("Dzienna kaloryczność powinna wynosić conajmniej 1300kcal")
+            return
+        }
+        if (kcal > 4000) {
+            alert("Dzienna kaloryczność powinna wynosić maksymalnie 4000kcal")
+            return
+        }
         const newMenu = {
             id: menus.length + 1,
             name: name,
@@ -387,7 +395,7 @@ class CreateMenu extends Component {
                     <form className="create-menu__form">
                         <label className="create-menu__form-name" htmlFor="name"><input className="create-menu__form-inp" onChange={this.handleMenuName} value={this.state.name} type="text" id="name" placeholder="nazwa"></input></label>
                         <label className="create-menu__form-days" htmlFor="days"><input className="create-menu__form-inp" onChange={this.handleDeaysNumber} value={this.state.days} type="number" id="days" placeholder="dni"></input></label>
-                        <label className="create-menu__form-kcal" htmlFor="kcal"><input className="create-menu__form-inp" onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal" placeholder="kcal"></input></label>
+                        <label className="create-menu__form-kcal" htmlFor="kcal"><input className="create-menu__form-inp" onChange={this.handleKcalNumber} value={this.state.kcal} type="number" id="kcal" placeholder="kcal na dzień"></input></label>
                         <button className="confirm-btn" onClick={this.handleCreateNewMenuButton}>Generuj jadłospis</button>
                     </form>
                 </div>
