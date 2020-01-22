@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import { FaAppleAlt, FaDrumstickBite, FaReceipt, FaShoppingCart, } from "react-icons/fa";
 import '../style/style.scss';
 import Recepts from './Recepts';
@@ -13,7 +13,7 @@ class App extends Component {
     recepts: [],
     menus: [],
     shopingListActiveItem: "nie dodano danych",
-    serverAdress: "http://localhost:3000",
+    serverAdress: "https://git.heroku.com/foodapppp.git",
     dataLoaded: false
   }
 
