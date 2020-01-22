@@ -67,7 +67,7 @@ class Menus extends Component {
                 <div className="section__right-side">
                     {this.state.showMenu ?
                         (this.state.activeMenu === -1 ?
-                            <CreateMenu handleHideRightSite={this.handleHideRightSite} upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} />
+                            <CreateMenu serverAdress={this.state.serverAdress} handleHideRightSite={this.handleHideRightSite} upgradeMenus={this.props.upgradeMenus} menus={this.props.menus} recepts={this.props.recepts} />
                             : <Menu menu={this.props.menus[this.state.activeMenu]} />)
                         : <h2>Wybierz istniejący jadłospis lub stwórz nowy aby wyświetlić</h2>}
                     <button className="section__icon-button" onClick={this.handleHideRightSite}><FaArrowAltCircleLeft /></button>

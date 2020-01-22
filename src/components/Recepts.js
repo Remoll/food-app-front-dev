@@ -83,7 +83,7 @@ class Recepts extends Component {
                 <div className="section__right-side">
                     {this.state.showRecept ?
                         (this.state.activeRecept === -1 ?
-                            <CreateRecept upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} handleHideRightSite={this.handleHideRightSite.bind(this)} />
+                            <CreateRecept serverAdress={this.state.serverAdress} upgradeRecepts={this.props.upgradeRecepts} products={this.props.products} id={this.props.recepts.length} handleHideRightSite={this.handleHideRightSite.bind(this)} />
                             : <Recept recept={this.props.recepts[this.state.activeRecept]} />)
                         : <h2>Wybierz istniejący przepis lub stwórz nowy aby wyświetlić</h2>}
                     <button className="section__icon-button" onClick={this.handleHideRightSite}><FaArrowAltCircleLeft /></button>
